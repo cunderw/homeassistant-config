@@ -1,0 +1,132 @@
+title:
+icon: mdi:cog-box
+panel: true
+cards:
+  - type: custom:layout-card
+    layout_type: custom:masonry-layout
+    cards:
+      - type: vertical-stack
+        cards:
+        - type: custom:auto-entities
+          card:
+            type: vertical-stack
+            title: Inputs
+          card_param: cards
+          filter:
+            include:
+              - domain: input_number
+                options:
+                  type: custom:numberbox-card
+            exclude: []
+      - type: vertical-stack
+        title: Batteries
+        cards:
+          - type: custom:auto-entities
+            card:
+              type: custom:battery-state-card
+              title: Cameras
+            filter:
+              include:
+                - domain: sensor
+                  options: {}
+                  attributes:
+                    device_class: battery
+                  entity_id: /aarlo/
+          - type: custom:auto-entities
+            card:
+              type: custom:battery-state-card
+              title: Door Sensors
+            filter:
+              include:
+                - domain: sensor
+                  options: {}
+                  attributes:
+                    device_class: battery
+                  device: /Door/
+          - type: custom:auto-entities
+            card:
+              type: custom:battery-state-card
+              title: Motion Sensors
+            filter:
+              include:
+                - domain: sensor
+                  options: {}
+                  attributes:
+                    device_class: battery
+                  device: /Motion/
+              exclude:
+                - device: /phone/
+                - device: /CARSON-GAME/
+          - type: custom:auto-entities
+            card:
+              type: custom:battery-state-card
+              title: Climate
+            filter:
+              include:
+                - domain: sensor
+                  options: {}
+                  attributes:
+                    device_class: battery
+                  device: /Climate|Thermostat/
+      - type: vertical-stack
+        cards:
+          - type: custom:auto-entities
+            card:
+              type: vertical-stack
+              title: Climate
+            card_param: cards
+            filter:
+              include:
+                - domain: climate
+                  options:
+                    type: history-graph
+                    entities:
+                      - this.entity_id
+              exclude: []
+          # House Temp
+          - type: custom:auto-entities
+            card:
+              type: custom:mini-graph-card
+              name: House Temperature
+              show:
+                labels: true
+                labels_secondary: true
+            filter:
+              include:
+                - entity_id: /temp/
+              exclude:
+                - entity_id: /realfeel/
+                - domain: automation
+                - domain: input_number
+                - device: /Lock/
+          # House Humidity
+          - type: custom:auto-entities
+            card:
+              type: custom:mini-graph-card
+              name: House Humidity
+              show:
+                labels: true
+                labels_secondary: true
+            filter:
+              include:
+                - entity_id: /humidity/
+              exclude:
+                - entity_id: /realfeel/
+                - domain: automation
+                - domain: input_number
+                - device: /Lock/
+      - type: vertical-stack
+        cards:
+          - type: custom:auto-entities
+            card:
+              type: vertical-stack
+              title: System
+            card_param: cards
+            filter:
+              include:
+                - entity_id: /memory|swap|processor|disk/
+                  options:
+                    type: history-graph
+                    entities:
+                      - this.entity_id
+              exclude: []   

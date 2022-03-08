@@ -1,0 +1,6 @@
+family_tracker:
+  name: Family
+  entities:
+    - device_tracker.carson_phone_2
+    - device_tracker.anna_phone
+  all: false

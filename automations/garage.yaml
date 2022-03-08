@@ -1,0 +1,69 @@
+#################################################
+# Control
+#################################################
+- alias: Garage Bay 1 Tag
+  trigger:
+  - platform: tag
+    tag_id: 37c4b309-04f1-4de9-9126-6fe4f9e23cea
+  condition: []
+  action:
+  - service: cover.toggle
+    target:
+      device_id: 281b61168c1b255d2acd52d7615b7380
+  mode: single
+
+- alias: Garage Bay 2 Tag
+  trigger:
+  - platform: tag
+    tag_id: c52753d9-930d-4660-b030-465db0708ebd
+  condition: []
+  action:
+  - service: cover.toggle
+    target:
+      device_id: 7b26ea48f9160f57818c8dcfe7aecb56
+  mode: single
+
+
+
+#################################################
+# Motion
+#################################################
+- alias: Garage Hallway Motion
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_hallway_motion
+      from: "off"
+      to: "on"
+  action:
+    - service: light.turn_on
+      entity_id: light.garage_hallway
+      
+- alias: Garage Hallyway Idle
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_hallway_motion
+      to: "off"
+      for: "00:2:00"
+  action:
+    - service: light.turn_off
+      entity_id: light.garage_hallway
+
+- alias: Garage Occupied
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_occupancy
+      from: "off"
+      to: "on"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.garage_lights
+
+- alias: Garage Vacant
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_occupancy
+      to: "off"
+      for: "00:15:00"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.garage_lights

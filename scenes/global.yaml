@@ -1,0 +1,72 @@
+- name: Away
+  entities:
+    light.living_room_lights:
+      state: "on"
+      brightness: 10
+    light.kitchen_lights:
+      state: "on"
+      brightness: 10
+    light.dining_room_lights:
+      state: "off"
+    light.office_lights:
+      state: "off"
+    light.bedroom_lights:
+      state: "off"
+    light.front_door_lights:
+      state: "on"
+      brightness: 30
+    switch.bedroom_bathroom_vanity:
+      state: "off"
+    switch.bedroom_floor_lamp:
+      state: "off"
+    switch.laundry_room_lights:
+      state: "off"
+    switch.nursery_lights:
+      state: "off"
+    switch.office_ceiling_fan_lights:
+      state: "off"
+
+- name: Arriving Home
+  entities:
+    light.dining_room_lights:
+      state: "on"
+      brightness: 255
+    light.front_door_lights:
+      state: "on"
+      brightness: 255
+    switch.laundry_room_lights:
+      state: "on"
+    light.living_room_lights:
+      state: "on"
+      brightness: 255
+    light.kitchen_lights:
+      state: "on"
+      brightness: 255
+
+- name: Sleep
+  entities:
+    light.bedroom_lights:
+      state: "off"
+    light.breezeway_light_2:
+      state: "off"
+    light.dining_room_lights:
+      state: "off"
+    light.front_door_lights:
+      state: "off"
+    light.kitchen_lights:
+      state: "off"
+    light.living_room_lights:
+      state: "off"
+    light.office_lights:
+      state: "off"
+    switch.bedroom_floor_lamp:
+      state: "off"
+    switch.bedroom_bathroom_vanity:
+      state: "off"
+    switch.nursery_lights:
+      state: "off"
+    switch.office_ceiling_fan_lights:
+      state: "off"
+    switch.laundry_room_lights:
+      state: "off"
+

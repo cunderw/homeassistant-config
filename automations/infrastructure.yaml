@@ -1,0 +1,27 @@
+#################################################
+# Monitor
+#################################################
+
+
+#################################################
+# Network
+#################################################
+- alias: Unraid Went Down
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.unraid
+      from: "on"
+      to: "off"
+      for: "00:05:00"
+  action:
+    - service: notify.mobile_app_carson_phone
+      data:
+        message: "Unraid went down!"
+    - service: notify.mobile_app_carson_ipad
+      data:
+        message: "Unraid went down!"
+    - service: notify.mobile_app_carson_mac
+      data:
+        message: "Unraid went down!"
+    - service: shell_command.restart_unraid
+  mode: single

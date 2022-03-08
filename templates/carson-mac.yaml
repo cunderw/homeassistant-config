@@ -1,0 +1,9 @@
+- sensor:
+  - name: "Carson Mac Locked"
+    state: >
+      {{ state_attr('binary_sensor.carson_mac_active_2', 'Locked') }}
+
+- sensor:
+  - name: "Carson Mac Screen Off"
+    state: >
+      {{ state_attr('binary_sensor.carson_mac_active_2', 'Screen Off') }}

@@ -1,0 +1,165 @@
+#################################################
+# carson-mac
+#################################################
+- alias: Carson Mac Screen On Lights
+  trigger:
+    - platform: state
+      entity_id: sensor.carson_mac_screen_off
+      from: "True"
+      to: "False"
+  condition:
+    condition: state
+    entity_id:
+      - media_player.office_tv
+    state: "off"
+  action:
+    - service: tts.cloud_say
+      entity_id: media_player.office_clock
+      data:
+        message: Hello Carson!
+        options:
+          gender: female
+        language: en-GB
+    - service: light.turn_on
+      entity_id: light.office_lights
+    - service: switch.turn_on
+      entity_id: switch.office_studio_monitors
+    - service: switch.turn_on
+      entity_id: switch.office_ceiling_fan_lights
+  mode: single
+
+- alias: Carson Mac Screen On Desk
+  trigger:
+    - platform: state
+      entity_id: sensor.carson_mac_screen_off
+      from: "True"
+      to: "False"
+  action:
+    - service: tts.cloud_say
+      entity_id: media_player.office_clock
+      data:
+        message: Hello Carson!
+        options:
+          gender: female
+        language: en-GB
+    - service: light.turn_on
+      entity_id: light.office_carson_desk
+    - service: switch.turn_on
+      entity_id: switch.office_studio_monitors
+  mode: single
+
+- alias: Carson Mac Screen Off Lights
+  trigger:
+    - platform: state
+      entity_id: sensor.carson_mac_screen_off
+      from: "False"
+      to: "True"
+      for: "00:30:00"
+  condition:
+    condition: state
+    entity_id:
+      - media_player.office_tv
+    state: "off"
+  action:
+    - service: light.turn_off
+      entity_id: light.office_lights
+    - service: switch.turn_off
+      entity_id: switch.office_ceiling_fan_lights
+  mode: single
+
+- alias: Carson Mac Screen Off Desk
+  trigger:
+    - platform: state
+      entity_id: sensor.carson_mac_screen_off
+      from: "False"
+      to: "True"
+      for: "00:10:00"
+  action:
+    - service: light.turn_off
+      entity_id: light.office_carson_desk
+    - service: switch.turn_off
+      entity_id: switch.office_studio_monitors
+  mode: single
+
+- alias: Carson Mac Webcam Active
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.carson_mac_camera_in_use_2
+      to: "on"
+  action:
+    - service: light.turn_on
+      data:
+        brightness: 255
+        rgb_color: [255, 0, 0]
+        entity_id: light.office_stairs
+  mode: queued
+
+- alias: Carson Mac Webcam Inactive
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.carson_mac_camera_in_use_2
+      to: "off"
+  action:
+    - service: light.turn_on
+      data:
+        brightness: 255
+        rgb_color: [0, 255, 0]
+        entity_id: light.office_stairs
+  mode: queued
+
+#################################################
+# Motion
+#################################################
+- alias: Office Bathroom Occupied
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.office_bathroom_occupancy
+      from: "off"
+      to: "on"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.office_bathroom_lights
+
+- alias: Office Bathroom Vacant
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.office_bathroom_occupancy
+      to: "off"
+      for: "00:15:00"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.office_bathroom_lights
+
+- alias: Office Stairs Motion
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.office_stairs_motion
+      from: "off"
+      to: "on"
+  # condition:
+  #   - condition: state
+  #     entity_id:
+  #       - binary_sensor.carson_mac_camera_in_use_2
+  #     state: "off"
+  #   - condition: state
+  #     entity_id:
+  #       - binary_sensor.carson_mac_active_2
+  #     state: "off"
+  action:
+    - service: light.turn_on
+      entity_id: light.office_stairs
+
+- alias: Office Stairs Idle
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.office_stairs_motion
+      to: "off"
+      for: "00:2:00"
+  # condition:
+  #   condition: state
+  #   entity_id:
+  #     - binary_sensor.carson_mac_camera_in_use_2
+  #   state: "off"
+  action:
+    - service: light.turn_off
+      entity_id: light.office_stairs

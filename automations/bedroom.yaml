@@ -1,0 +1,62 @@
+#################################################
+# Bedroom Motion
+#################################################
+- alias: Bedroom Bathroom Occupied
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.bedroom_bathroom_occupancy
+      from: "off"
+      to: "on"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.bedroom_bathroom_vanity
+
+- alias: Bedroom Bathroom Vacant
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.bedroom_bathroom_occupancy
+      to: "off"
+      for: "00:30:00"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.bedroom_bathroom_vanity
+
+#################################################
+# Nursery Motion
+#################################################
+
+#################################################
+# Control
+#################################################
+- alias: Bedroom Controller
+  trigger:
+    - platform: event
+      event_type: zha_event
+      event_data:
+        device_id: 38823d2ac8278565d4e1a71abe5eb7b1
+  action:
+    - variables:
+        command: "{{ trigger.event.data.command }}"
+    - choose:
+        - conditions:
+            - "{{ command == 'on_short_release' }}"
+          sequence:
+            - service: light.toggle
+              entity_id: light.bedroom_ceiling
+        - conditions:
+            - "{{ command == 'up_short_release' }}"
+          sequence:
+            - service: light.toggle
+              entity_id: light.bedroom_bedside_lamps
+        - conditions:
+            - "{{ command == 'down_short_release' }}"
+          sequence:
+            - service: switch.toggle
+              entity_id: switch.bedroom_floor_lamp
+        - conditions:
+            - "{{ command == 'off_short_release' }}"
+          sequence:
+            - service: light.toggle
+              entity_id: light.iris
+  mode: queued
+  max_exceeded: silent

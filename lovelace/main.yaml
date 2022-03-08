@@ -1,0 +1,230 @@
+title:
+path: main
+icon: mdi:home
+panel: true
+cards:
+  - type: custom:layout-card
+    layout_type: custom:masonry-layout
+    cards:
+      #################################################
+      # People, alarm, doors, lights
+      #################################################
+      - type: vertical-stack
+        cards:
+          # People
+          - type: custom:auto-entities
+            card:
+              type: grid
+              columns: 2
+              square: false
+            card_param: cards
+            filter:
+              include:
+                - domain: person
+                  options:
+                    type: custom:mushroom-person-card
+                    hide_name: true
+                    use_entity_picture: true
+                    vertical: true
+              exclude:
+                - entity_id: /family/
+          # Alarm
+          - type: horizontal-stack
+            cards:
+              - entity: alarm_control_panel.aarlo_annacar_arlo
+                name: Alarm
+                type: alarm-panel
+              - type: button
+                icon: mdi:alarm-off
+                tap_action:
+                  action: call-service
+                  service: aarlo.sirens_off
+          # Doors
+          - type: custom:auto-entities
+            card:
+              type: grid
+              columns: 2
+              square: false
+            card_param: cards
+            filter:
+              include:
+                - domain: binary_sensor
+                  device: /Door/
+                  options:
+                    type: custom:mushroom-entity-card
+              exclude:
+                - device: /Lock/
+          # Locks and Garage
+          - type: custom:auto-entities
+            card:
+              type: grid
+              columns: 2
+              square: false
+            card_param: cards
+            filter:
+              include:
+                - entity_id: /lock/
+                  domain: lock
+                  options:
+                    type: custom:mushroom-entity-card
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                - domain: cover
+                  options:
+                    type: custom:mushroom-cover-card
+                    show_buttons_control: true
+              exclude:
+                - domain: timer
+                - domain: automation
+                - domain: input_number
+          # Lights
+          - type: custom:auto-entities
+            card:
+              type: grid
+              columns: 2
+              square: false
+            card_param: cards
+            filter:
+              include:
+                - entity_id: /lights/
+                  options:
+                    type: custom:mushroom-light-card
+                    show_brightness_control: true
+                    use_light_color: true
+                    show_color_control: true
+              exclude:
+                - domain: timer
+                - domain: automation
+                - domain: input_number
+            sort:
+              method: friendly_name
+      #################################################
+      # Climate, media
+      #################################################
+      - type: vertical-stack
+        cards:
+          # Climate
+          - type: horizontal-stack
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:mushroom-title-card
+                    title: Downstairs
+                  - type: horizontal-stack
+                    cards:
+                      - type: custom:mushroom-chips-card
+                        chips:
+                          - type: entity
+                            entity: climate.downstairs_thermostat
+                          - type: entity
+                            entity: sensor.downstairs_temp
+                  - type: horizontal-stack
+                    cards:                
+                    - type: custom:mushroom-chips-card
+                      chips:
+                        - type: action
+                          tap_action:
+                            action: call-service
+                            service: climate.set_hvac_mode
+                            service_data:
+                              hvac_mode: 'off'
+                            target:
+                              entity_id: climate.downstairs_thermostat
+                          icon: mdi:power
+                        - type: action                      
+                          tap_action:
+                            action: call-service
+                            service: climate.set_hvac_mode
+                            service_data:
+                              hvac_mode: 'cool'
+                            target:
+                              entity_id: climate.downstairs_thermostat
+                          icon: mdi:air-conditioner
+                        - type: action
+                          tap_action:
+                            action: call-service
+                            service: climate.set_hvac_mode
+                            service_data:
+                              hvac_mode: 'heat'
+                            target:
+                              entity_id: climate.downstairs_thermostat
+                          icon: mdi:fire
+                  - type: custom:numberbox-card
+                    entity: input_number.downstairs_temp
+                    name: Target
+                    icon: mdi:temperature-fahrenheit
+                    unit: 1
+              - type: vertical-stack
+                cards:
+                  - type: custom:mushroom-title-card
+                    title: Upstairs
+                  - type: horizontal-stack
+                    cards:
+                      - type: custom:mushroom-chips-card
+                        chips:
+                          - type: entity
+                            entity: climate.upstairs_thermostat
+                          - type: entity
+                            entity: sensor.upstairs_temp
+                  - type: horizontal-stack
+                    cards:                
+                    - type: custom:mushroom-chips-card
+                      chips:
+                        - type: action
+                          tap_action:
+                            action: call-service
+                            service: climate.set_hvac_mode
+                            service_data:
+                              hvac_mode: 'off'
+                            target:
+                              entity_id: climate.upstairs_thermostat
+                          icon: mdi:power
+                        - type: action                      
+                          tap_action:
+                            action: call-service
+                            service: climate.set_hvac_mode
+                            service_data:
+                              hvac_mode: 'cool'
+                            target:
+                              entity_id: climate.upstairs_thermostat
+                          icon: mdi:air-conditioner
+                        - type: action
+                          tap_action:
+                            action: call-service
+                            service: climate.set_hvac_mode
+                            service_data:
+                              hvac_mode: 'heat'
+                            target:
+                              entity_id: climate.upstairs_thermostat
+                          icon: mdi:fire
+                  - type: custom:numberbox-card
+                    entity: input_number.upstairs_temp
+                    name: Target
+                    icon: mdi:temperature-fahrenheit
+                    unit: 1
+          # Media
+          - type: custom:auto-entities
+            card:
+              type: vertical-stack
+            card_param: cards
+            filter:
+              include:
+                - domain: media_player
+                  options:
+                    type: custom:mini-media-player
+                    hide:
+                      power: true
+                      source: false
+                      volume: true
+                    idle_view:
+                      after: 10
+                      when_idle: true
+                      when_paused: true
+                    info: short
+                    source: icon
+              exclude:
+                - entity_id: /plex/
+            sort:
+              method: friendly_name

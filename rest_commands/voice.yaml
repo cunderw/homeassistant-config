@@ -1,0 +1,5 @@
+google_assistant_broadcast:
+  url: !secret google_assistant_broadcast
+  method: POST
+  content_type: 'application/json'
+  payload: '{"command":"{{ command }}", "broadcast":true}'

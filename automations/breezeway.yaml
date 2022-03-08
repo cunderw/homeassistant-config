@@ -1,0 +1,48 @@
+#################################################
+# Motion
+#################################################
+- alias: Breezeway Motion
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.aarlo_motion_breezeway
+      from: "off"
+      to: "on"
+  action:
+    - service: light.turn_on
+      entity_id: light.breezeway_light_2
+  condition:
+    alias: "Sun down"
+    condition: state
+    entity_id: sun.sun
+    state: "below_horizon"
+  mode: single
+
+- alias: Breezeway Idle
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.aarlo_motion_breezeway
+      to: "off"
+      for: "00:10:00"
+  action:
+    - service: light.turn_off
+      entity_id: light.breezeway_light_2
+  mode: single
+
+#################################################
+# Door Open
+#################################################
+- alias: Laundry Room Door Open
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.laundry_room_door
+      from: "off"
+      to: "on"
+  action:
+    - service: light.turn_on
+      entity_id: light.breezeway_light_2
+  condition:
+    alias: "Sun down"
+    condition: state
+    entity_id: sun.sun
+    state: "below_horizon"
+  mode: single

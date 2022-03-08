@@ -1,0 +1,110 @@
+#################################################
+# Doors
+#################################################
+- alias: Someone Is At The Front Door
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.aarlo_ding_front_doorbell
+      from: "off"
+      to: "on"
+  action:
+    - service: rest_command.google_assistant_broadcast
+      data:
+        command: Someone is at the front door
+    - service: notify.all_personal_devices
+      data:
+        message: "Someone is at the front door!"
+
+- alias: Announce Front Door Open
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.front_door
+      from: "off"
+      to: "on"
+      for: "00:00:01"
+  action:
+    - service: rest_command.google_assistant_broadcast
+      data:
+        command: "Front Door Is Open"
+    - service: notify.all_personal_devices
+      data:
+        message: "Front door is open!"
+  mode: single
+
+- alias: Announce Garage Door Open
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_door
+      from: "off"
+      to: "on"
+      for: "00:00:01"
+  action:
+    - service: rest_command.google_assistant_broadcast
+      data:
+        command: "Garage Door Is Open"
+    - service: notify.all_personal_devices
+      data:
+        message: "Garage door is open!"
+  mode: single
+
+- alias: Announce Bedroom Door Open
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.bedroom_door
+      from: "off"
+      to: "on"
+      for: "00:00:01"
+  action:
+    - service: rest_command.google_assistant_broadcast
+      data:
+        command: "Bedroom Door Is Open"
+    - service: notify.all_personal_devices
+      data:
+        message: "Bedroom door is open!"
+  mode: single
+
+- alias: Announce Launry Room Door Open
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.laundry_room_door
+      from: "off"
+      to: "on"
+      for: "00:00:01"
+  action:
+    - service: rest_command.google_assistant_broadcast
+      data:
+        command: "Laundry Room Door Is Open"
+    - service: notify.all_personal_devices
+      data:
+        message: "Laundry room door is open!"
+  mode: single
+
+- alias: Door Alarm When Away
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.front_door
+      to: "on"
+    - platform: state
+      entity_id: binary_sensor.laundry_room_door
+      to: "on"
+    - platform: state
+      entity_id: binary_sensor.office_door
+      to: "on"
+    - platform: state
+      entity_id: binary_sensor.garage_door
+  condition:
+    condition: state
+    entity_id: alarm_control_panel.aarlo_annacar_arlo
+    state: "armed_away"
+  action:
+    - service: aarlo.sirens_on
+      data:
+        volume: 10
+        duration: 300
+    - service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.aarlo_annacar_arlo
+    - service: notify.all_personal_devices
+      data:
+        message: "Someone Is Breaking In!"
+  mode: single
+

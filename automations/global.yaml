@@ -1,0 +1,112 @@
+#################################################
+# General
+#################################################
+- alias: "Sun Rise"
+  trigger:
+    platform: sun
+    event: sunrise
+    offset: "+00:00:00"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.front_porch
+    - service: switch.turn_off
+      entity_id: switch.front_driveway_lights
+
+- alias: "Sun Set"
+  trigger:
+    platform: sun
+    event: sunset
+    offset: "+00:00:00"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.front_porch
+    - service: switch.turn_on
+      entity_id: switch.front_driveway_lights
+
+#################################################
+# Location & Alarms
+#################################################
+- alias: Arm Away
+  trigger:
+    platform: state
+    entity_id: group.family_tracker
+    from: "home"
+    to: "not_home"
+    for:
+      seconds: 60
+  condition: []
+  action:
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.aarlo_annacar_arlo
+    - service: notify.all_personal_devices
+      data:
+        message: Everyone has left. Activating Away Mode.
+    - service: scene.turn_on
+      entity_id: scene.away
+    - service: script.lock_doors
+  mode: single
+
+- alias: Arm Home
+  trigger:
+    platform: state
+    entity_id: group.family_tracker
+    from: "not_home"
+    to: "home"
+    for:
+      seconds: 10
+  condition: []
+  action:
+    - service: alarm_control_panel.alarm_arm_home
+      entity_id: alarm_control_panel.aarlo_annacar_arlo
+    - service: notify.all_personal_devices
+      data:
+        message: Arriving Home
+    - service: scene.turn_on
+      entity_id: scene.arriving_home
+    - service: script.unlock_doors
+  mode: single
+
+#################################################
+#  Device Alerts
+#################################################
+- alias: Low Battery Level
+  use_blueprint:
+    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      actions:
+        - service: notify.mobile_app_carson_phone
+          data:
+            message: "{{sensors}} have low battery!"
+        - service: notify.mobile_app_carson_ipad
+          data:
+            message: "{{sensors}} have low battery!"
+        - service: notify.mobile_app_carson_mac
+          data:
+            message: "{{sensors}} have low battery!"
+      threshold: 10
+
+#################################################
+#  Tags
+#################################################
+- alias: Front Door Is Tagged
+  trigger:
+    - platform: tag
+      tag_id: f849630c-64f4-4f6a-ba15-9e4fb22c411a
+  condition: []
+  action:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: lock.front_door_lock
+              state: locked
+          sequence:
+            - service: lock.unlock
+              entity_id: lock.front_door_lock
+        - conditions:
+            - condition: state
+              entity_id: lock.front_door_lock
+              state: unlocked
+          sequence:
+            - service: lock.lock
+              entity_id: lock.front_door_lock
+  mode: single

@@ -1,0 +1,204 @@
+title:
+icon: mdi:television-box
+panel: true
+cards:
+  - type: custom:layout-card
+    max_width: 100%
+    layout: horizontal
+    max_columns: 4
+    sidebar_column: false
+    cards:  
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              # Play / Pause
+              - type: button
+                name: Play/Pause
+                entity: remote.living_room_apple_tv_remote
+                icon: "mdi:play-pause"
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: play_pause
+                    entity_id: remote.living_room_apple_tv_remote
+                hold_action:
+                  action: none
+              # Up
+              - type: button
+                name: Up arrow
+                entity: remote.living_room_apple_tv_remote
+                icon: "mdi:arrow-up"
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: up
+                    entity_id: remote.living_room_apple_tv_remote
+                hold_action:
+                  action: none
+              # Next
+              - type: button
+                name: Next
+                entity: remote.living_room_apple_tv_remote
+                show_icon: true
+                show_name: false
+                icon: "mdi:skip-next"
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: next
+                    entity_id: remote.living_room_apple_tv_remote
+                hold_action:
+                  action: none
+          - type: horizontal-stack
+            cards:
+              # Left
+              - type: button
+                name: Left arrow
+                entity: remote.living_room_apple_tv_remote
+                icon: "mdi:arrow-left"
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: left
+                    entity_id: remote.living_room_apple_tv_remote
+                hold_action:
+                  action: none
+              # Apple
+              - type: button
+                name: Select
+                entity: remote.living_room_apple_tv_remote
+                icon: "mdi:apple"
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: select
+                    entity_id: remote.living_room_apple_tv_remote
+                hold_action:
+                  action: none
+              # Right
+              - type: button
+                name: Right arrow
+                entity: remote.living_room_apple_tv_remote
+                icon: "mdi:arrow-right"
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: right
+                    entity_id: remote.living_room_apple_tv_remote
+                hold_action:
+                  action: none
+          - type: horizontal-stack
+            cards:
+              # Volume Up
+              - type: button
+                name: Volume up
+                entity: remote.living_room_apple_tv_remote
+                icon: "mdi:volume-plus"
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: volume_up
+                    entity_id: remote.living_room_apple_tv_remote
+                hold_action:
+                  action: none
+              # Down
+              - type: button
+                entity: remote.living_room_apple_tv_remote
+                name: Down arrow
+                icon: "mdi:arrow-down"
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: down
+                    entity_id: remote.living_room_apple_tv_remote
+                hold_action:
+                  action: none
+              # Volume Down
+              - type: button
+                name: Volume down
+                entity: remote.living_room_apple_tv_remote
+                icon: "mdi:volume-minus"
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: volume_down
+                    entity_id: remote.living_room_apple_tv_remote
+                hold_action:
+                  action: none
+          - type: horizontal-stack
+            cards:
+              # Menu
+              - type: button
+                name: Menu
+                entity: remote.living_room_apple_tv_remote
+                icon: "mdi:menu"
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: menu
+                    entity_id: remote.living_room_apple_tv_remote
+                hold_action:
+                  action: none
+              # Home
+              - type: button
+                name: Home
+                entity: remote.living_room_apple_tv_remote
+                icon: "mdi:home"
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: home
+                    entity_id: remote.living_room_apple_tv_remote
+                hold_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: home_hold
+                    entity_id: remote.living_room
+              # Sleep
+              - type: button
+                name: Sleep
+                entity: remote.living_room_apple_tv_remote
+                icon: "mdi:sleep"
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: suspend
+                    entity_id: remote.living_room_apple_tv_remote
+                hold_action:
+                  action: none

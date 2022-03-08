@@ -1,0 +1,30 @@
+title:
+icon: mdi:camera
+panel: true
+cards:
+  - type: custom:auto-entities
+    card:
+      type: custom:layout-card
+      layout_type: custom:masonry-layout
+    card_param: cards
+    filter:
+      include:
+        - domain: camera
+          entity_id: /aarlo/
+          options:
+            type: custom:aarlo-glance
+            image_click: play
+            show:
+              - motion
+              - sound
+              - snapshot
+              - battery_level
+              - signal_strength
+            top_date: true
+        - domain: camera
+          not:
+            entity_id: /aarlo|carson|mail|person/
+          options:
+            type: picture-entity
+    sort:
+      method: friendly_name

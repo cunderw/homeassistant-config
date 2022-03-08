@@ -1,0 +1,13 @@
+- platform: group
+  name: Living Room TV
+  entities:
+    - light.living_room_tv_left_lamp
+    - light.living_room_tv_right_lamp
+    - light.living_room_light_bar_1
+    - light.living_room_light_bar_2
+
+- platform: group
+  name: Living Room Lights
+  entities:
+    - light.living_room_tv
+    - light.living_room_group

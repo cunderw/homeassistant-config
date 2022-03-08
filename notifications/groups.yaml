@@ -1,0 +1,7 @@
+- name: all_personal_devices
+  platform: group
+  services:
+    - service: mobile_app_anna_phone
+    - service: mobile_app_carson_phone
+    - service: mobile_app_carson_ipad
+    - service: mobile_app_carson_mac

@@ -1,0 +1,15 @@
+- alias: Upstairs Target Temp
+  use_blueprint:
+    path: cunderw/target_temperature_adjustment.yaml
+    input:
+      temperature_sensor: sensor.upstairs_temp
+      thermostat: climate.upstairs_thermostat
+      target_temperature: input_number.upstairs_temp
+
+- alias: Downstairs Target Temp
+  use_blueprint:
+    path: cunderw/target_temperature_adjustment.yaml
+    input:
+      temperature_sensor: sensor.downstairs_temp
+      thermostat: climate.downstairs_thermostat
+      target_temperature: input_number.downstairs_temp

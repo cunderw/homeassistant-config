@@ -1,0 +1,20 @@
+title: Home
+swipe_nav:
+  wrap: false
+  animate: swipe
+  prevent_default: true
+  swipe_amount: 40
+views:
+  - !include /config/lovelace/main.yaml
+  - !include /config/lovelace/lights.yaml
+  - !include /config/lovelace/media.yaml
+  - !include /config/lovelace/cameras.yaml
+  - !include /config/lovelace/config.yaml
+
+# theme settings
+custom_header:
+  compact_mode: true
+  background: var(--app-header-background-color)
+  elements_color: var(--app-header-text-color)
+  active_tab_color: var(--state-icon-active-color)
+  tab_indicator_color: var(--state-icon-active-color)
