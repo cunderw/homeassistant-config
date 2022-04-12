@@ -15,4 +15,3 @@ unlock_doors:
       entity_id: lock.laundry_room_door_lock
     - service: lock.unlock
       entity_id: lock.front_door_lock
-

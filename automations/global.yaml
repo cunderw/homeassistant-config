@@ -43,7 +43,6 @@
         message: Everyone has left. Activating Away Mode.
     - service: scene.turn_on
       entity_id: scene.away
-    - service: script.lock_doors
   mode: single
 
 - alias: Arm Home
@@ -63,7 +62,6 @@
         message: Arriving Home
     - service: scene.turn_on
       entity_id: scene.arriving_home
-    - service: script.unlock_doors
   mode: single
 
 #################################################
@@ -109,4 +107,35 @@
           sequence:
             - service: lock.lock
               entity_id: lock.front_door_lock
+  mode: single
+
+#################################################
+#  Locks
+#################################################
+- alias: Lock Doors
+  trigger:
+    - platform: event
+      event_type: call_service
+      event_data:
+        domain: scene
+        service: turn_on
+        service_data:
+          entity_id: scene.away
+    - platform: event
+      event_type: call_service
+      event_data:
+        domain: scene
+        service: turn_on
+        service_data:
+          entity_id: scene.bedtime
+    - platform: event
+      event_type: call_service
+      event_data:
+        domain: scene
+        service: turn_on
+        service_data:
+          entity_id: scene.sleep
+  condition: []
+  action:
+    - service: script.lock_doors
   mode: single

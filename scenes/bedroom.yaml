@@ -7,12 +7,20 @@
       state: "on"
       brightness: 255
       color_mode: "xy"
-      xy_color: [0.151, 0.344]
+      xy_color: [0.137, 0.041]
     light.bedroom_ceiling:
+      state: "off"
+    light.breezeway_ceiling_lights:
+      state: "off"
+    light.kitchen_lights:
       state: "off"
     switch.bedroom_floor_lamp:
       state: "off"
     switch.nursery_lights:
       state: "off"
     switch.bedroom_bathroom_vanity:
+      state: "off"
+    switch.laundry_room_light:
+      state: "off"
+    switch.breezeway_ceiling_lights:
       state: "off"
