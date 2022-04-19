@@ -1,0 +1,8 @@
+house_state:
+    name: House State
+    options:
+      - home
+      - away
+      - night
+    initial: home
+    icon: mdi:home-modern

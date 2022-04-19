@@ -2,6 +2,7 @@
   entities:
     fan.breezeway_ceiling_fan:
       state: "off"
+    input_select.house_state: night
     light.bedroom_bathroom_vanity_lights:
       state: "off"
     light.bedroom_bedside_lamps:
@@ -22,7 +23,3 @@
       state: "off"
     light.nursery_lights:
       state: "off"
-    lock.front_door_lock:
-      state: "locked"
-    lock.laundry_room_door_lock:
-      state: "locked"

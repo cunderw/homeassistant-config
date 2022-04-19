@@ -1,5 +1,6 @@
 - name: Away
   entities:
+    input_select.house_state: away
     light.bedroom_bathroom_vanity_lights:
       state: "off"
     light.bedroom_lights:
@@ -21,13 +22,10 @@
       state: "off"
     light.office_lights:
       state: "off"
-    lock.front_door_lock:
-      state: "locked"
-    lock.laundry_room_door_lock:
-      state: "locked"
 
 - name: Arriving Home
   entities:
+    input_select.house_state: home
     light.dining_room_lights:
       state: "on"
       brightness: 255
@@ -42,11 +40,12 @@
     light.living_room_lights:
       state: "on"
       brightness: 255
-    
+
 - name: Sleep
   entities:
     fan.breezeway_ceiling_fan:
       state: "off"
+    input_select.house_state: night
     light.bedroom_lights:
       state: "off"
     light.bedroom_bathroom_vanity_lights:
@@ -69,7 +68,3 @@
       state: "off"
     light.office_lights:
       state: "off"
-    lock.front_door_lock:
-      state: "locked"
-    lock.laundry_room_door_lock:
-      state: "locked"
