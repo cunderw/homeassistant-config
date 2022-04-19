@@ -9,7 +9,7 @@
       to: "on"
   action:
     - service: light.turn_on
-      entity_id: light.breezeway_door_lights
+      entity_id: light.breezeway_doors
   condition:
     alias: "Sun down"
     condition: state
@@ -25,7 +25,7 @@
       for: "00:10:00"
   action:
     - service: light.turn_off
-      entity_id: light.breezeway_door_lights
+      entity_id: light.breezeway_doors
   mode: single
 
 #################################################
@@ -39,7 +39,7 @@
       to: "on"
   action:
     - service: light.turn_on
-      entity_id: light.breezeway_door_lights
+      entity_id: light.breezeway_doors
   condition:
     alias: "Sun down"
     condition: state

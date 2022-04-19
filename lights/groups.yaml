@@ -1,4 +1,20 @@
 - platform: group
+  unique_id: 'a9d867f4-bf3c-11ec-9d64-0242ac120002'
+  name: Bedroom Lights
+  entities:
+    - light.bedroom_bedside_lamps
+    - light.bedroom_ceiling
+    - light.bedroom_floor_lamp
+
+- platform: group
+  unique_id: 'b3e17b50-bf3c-11ec-9d64-0242ac120002'
+  name: Breezeway Lights
+  entities:
+    - light.breezeway_doors
+    - light.breezeway_ceiling
+
+- platform: group
+  unique_id: 'ba65d1ba-bf3c-11ec-9d64-0242ac120002'
   name: Living Room TV
   entities:
     - light.living_room_tv_left_lamp
@@ -7,7 +23,15 @@
     - light.living_room_light_bar_2
 
 - platform: group
+  unique_id: 'bfda0c4c-bf3c-11ec-9d64-0242ac120002'
   name: Living Room Lights
   entities:
     - light.living_room_tv
     - light.living_room_group
+
+- platform: group
+  unique_id: 'c499ecca-bf3c-11ec-9d64-0242ac120002'
+  name: Office Lights
+  entities:
+    - light.office_zigbee_light_group
+    - light.office_ceiling_fan

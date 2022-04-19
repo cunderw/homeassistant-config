@@ -1,30 +1,30 @@
 - name: Away
   entities:
-    light.living_room_lights:
-      state: "on"
-      brightness: 10
+    light.bedroom_bathroom_vanity_lights:
+      state: "off"
+    light.bedroom_lights:
+      state: "off"
     light.kitchen_lights:
       state: "on"
       brightness: 10
     light.dining_room_lights:
       state: "off"
-    light.office_lights:
-      state: "off"
-    light.bedroom_lights:
-      state: "off"
     light.front_door_lights:
       state: "on"
       brightness: 30
-    switch.bedroom_bathroom_vanity:
+    light.laundry_room_lights:
       state: "off"
-    switch.bedroom_floor_lamp:
+    light.living_room_lights:
+      state: "on"
+      brightness: 10
+    light.nursery_lights:
       state: "off"
-    switch.laundry_room_lights:
+    light.office_lights:
       state: "off"
-    switch.nursery_lights:
-      state: "off"
-    switch.office_ceiling_fan_lights:
-      state: "off"
+    lock.front_door_lock:
+      state: "locked"
+    lock.laundry_room_door_lock:
+      state: "locked"
 
 - name: Arriving Home
   entities:
@@ -34,20 +34,26 @@
     light.front_door_lights:
       state: "on"
       brightness: 255
-    switch.laundry_room_lights:
+    light.kitchen_lights:
+      state: "on"
+      brightness: 255
+    light.laundry_room_lights:
       state: "on"
     light.living_room_lights:
       state: "on"
       brightness: 255
-    light.kitchen_lights:
-      state: "on"
-      brightness: 255
-
+    
 - name: Sleep
   entities:
+    fan.breezeway_ceiling_fan:
+      state: "off"
     light.bedroom_lights:
       state: "off"
-    light.breezeway_light_2:
+    light.bedroom_bathroom_vanity_lights:
+      state: "off"
+    light.bedroom_floor_lamp:
+      state: "off"
+    light.breezeway_lights:
       state: "off"
     light.dining_room_lights:
       state: "off"
@@ -57,16 +63,13 @@
       state: "off"
     light.living_room_lights:
       state: "off"
+    light.laundry_room_lights:
+      state: "off"
+    light.nursery_lights:
+      state: "off"
     light.office_lights:
       state: "off"
-    switch.bedroom_floor_lamp:
-      state: "off"
-    switch.bedroom_bathroom_vanity:
-      state: "off"
-    switch.nursery_lights:
-      state: "off"
-    switch.office_ceiling_fan_lights:
-      state: "off"
-    switch.laundry_room_lights:
-      state: "off"
-
+    lock.front_door_lock:
+      state: "locked"
+    lock.laundry_room_door_lock:
+      state: "locked"

@@ -4,11 +4,11 @@
 - alias: Plex Play
   trigger:
     - platform: state
-      entity_id: media_player.plex_apple_tv_living_room
+      entity_id: media_player.living_room_plex
       from: idle
       to: playing
     - platform: state
-      entity_id: media_player.plex_apple_tv_living_room
+      entity_id: media_player.living_room_plex
       from: paused
       to: playing
   condition: []
@@ -20,7 +20,7 @@
 - alias: Plex Paused
   trigger:
     - platform: state
-      entity_id: media_player.plex_apple_tv_living_room
+      entity_id: media_player.living_room_plex
       from: playing
       to: paused
   condition: []

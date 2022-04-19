@@ -1,16 +1,13 @@
 - name: Movie Time
   entities:
+    light.dining_room_lights:
+      state: "off"
+    light.front_door_lights:
+      state: "off"
+    light.kitchen_lights:
+      state: "off"
     light.living_room_ceiling:
       state: "off"
-
-    light.living_room_tv:
-      state: "on"
-      brightness: 100
-      rgb_color:
-        - 255
-        - 131
-        - 118
-
     light.living_room_lamps:
       state: "on"
       brightness: 100
@@ -18,27 +15,24 @@
         - 255
         - 131
         - 118
-
-    light.kitchen_lights:
-      state: "off"
-
-    light.dining_room_lights:
-      state: "off"
-
-    light.front_door_lights:
-      state: "off"
+    light.living_room_tv:
+      state: "on"
+      brightness: 100
+      rgb_color:
+        - 255
+        - 131
+        - 118
 
 - name: Movie Time Paused
   entities:
-    light.living_room_tv:
+    light.living_room_lamps:
       state: "on"
       brightness: 255
       rgb_color:
         - 255
         - 131
         - 118
-
-    light.living_room_lamps:
+    light.living_room_tv:
       state: "on"
       brightness: 255
       rgb_color:

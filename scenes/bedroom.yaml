@@ -1,8 +1,9 @@
 - name: Bedtime
   entities:
-    light.iris:
-      state: "on"
-      brightness:  30
+    fan.breezeway_ceiling_fan:
+      state: "off"
+    light.bedroom_bathroom_vanity_lights:
+      state: "off"
     light.bedroom_bedside_lamps:
       state: "on"
       brightness: 255
@@ -10,17 +11,18 @@
       xy_color: [0.137, 0.041]
     light.bedroom_ceiling:
       state: "off"
-    light.breezeway_ceiling_lights:
+    light.breezeway_lights:
       state: "off"
+    light.iris:
+      state: "on"
+      brightness: 30
     light.kitchen_lights:
       state: "off"
-    switch.bedroom_floor_lamp:
+    light.laundry_room_lights:
       state: "off"
-    switch.nursery_lights:
+    light.nursery_lights:
       state: "off"
-    switch.bedroom_bathroom_vanity:
-      state: "off"
-    switch.laundry_room_light:
-      state: "off"
-    switch.breezeway_ceiling_lights:
-      state: "off"
+    lock.front_door_lock:
+      state: "locked"
+    lock.laundry_room_door_lock:
+      state: "locked"

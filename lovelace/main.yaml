@@ -88,7 +88,8 @@ cards:
             card_param: cards
             filter:
               include:
-                - entity_id: /lights/
+                - domain: light
+                  entity_id: /lights/
                   options:
                     type: custom:mushroom-light-card
                     show_brightness_control: true
@@ -98,6 +99,7 @@ cards:
                 - domain: timer
                 - domain: automation
                 - domain: input_number
+                - domain: switch
             sort:
               method: friendly_name
       #################################################

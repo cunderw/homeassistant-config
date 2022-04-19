@@ -3,12 +3,8 @@
     light.office_lights:
       state: "on"
       brightness: 255
-    switch.office_ceiling_fan_lights:
-      state: "on"
 
 - name: Office Inactive
   entities:
     light.office_lights:
-      state: "off"
-    switch.office_ceiling_fan_lights:
       state: "off"
