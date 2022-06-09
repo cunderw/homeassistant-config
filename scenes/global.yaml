@@ -41,6 +41,26 @@
       state: "on"
       brightness: 255
 
+- name: Morning
+  entities:
+    input_select.house_state: home
+    light.bedroom_lights:
+      state: "on"
+      brightness: 255
+      rgb_color:
+        - 255
+        - 255
+        - 255
+    light.downstairs_lights:
+      state: "on"
+      brightness: 255
+      rgb_color:
+        - 255
+        - 255
+        - 255
+    light.nursery_lights:
+      state: "on"
+
 - name: Sleep
   entities:
     fan.breezeway_ceiling_fan:

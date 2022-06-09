@@ -6,3 +6,12 @@ house_state:
       - night
     initial: home
     icon: mdi:home-modern
+
+office_state:
+    name: Office State
+    options:
+      - active
+      - inactive
+      - meeting
+    initial: inactive
+    icon: mdi:home-modern

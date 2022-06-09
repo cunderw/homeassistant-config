@@ -7,19 +7,19 @@
       state: "off"
     light.bedroom_bedside_lamps:
       state: "on"
-      brightness: 255
+      brightness: 59
       color_mode: "xy"
-      xy_color: [0.137, 0.041]
+      xy_color: [0.477, 0.196]
     light.bedroom_ceiling:
       state: "off"
     light.breezeway_lights:
       state: "off"
+    light.downstairs_lights:
+      state: "off"
     light.iris:
       state: "on"
-      brightness: 30
-    light.kitchen_lights:
-      state: "off"
-    light.laundry_room_lights:
-      state: "off"
+      brightness: 59
+      color_mode: "xy"
+      xy_color: [0.477, 0.196]
     light.nursery_lights:
       state: "off"

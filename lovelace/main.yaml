@@ -92,9 +92,9 @@ cards:
                   entity_id: /lights/
                   options:
                     type: custom:mushroom-light-card
-                    show_brightness_control: true
+                    show_brightness_control: false
                     use_light_color: true
-                    show_color_control: true
+                    show_color_control: false
               exclude:
                 - domain: timer
                 - domain: automation

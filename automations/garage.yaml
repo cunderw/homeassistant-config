@@ -54,7 +54,7 @@
       to: "on"
   action:
     - service: light.turn_on
-      entity_id: swilighttch.garage_lights
+      entity_id: light.garage_lights
 
 - alias: Garage Vacant
   trigger:

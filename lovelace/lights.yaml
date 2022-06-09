@@ -14,9 +14,6 @@ cards:
         card_param: entities
         filter:
           include:
-            - domain: switch
-              entity_id: /light/
-              area: Living Room
             - domain: light
               area: Living Room
               options:
@@ -33,9 +30,6 @@ cards:
         card_param: entities
         filter:
           include:
-            - domain: switch
-              entity_id: /light/
-              area: Kitchen
             - domain: light
               area: Kitchen
               options:
@@ -52,9 +46,6 @@ cards:
         card_param: entities
         filter:
           include:
-            - domain: switch
-              entity_id: /light/
-              area: Dining Room
             - domain: light
               area: Dining Room
               options:
@@ -71,9 +62,6 @@ cards:
         card_param: entities
         filter:
           include:
-            - domain: switch
-              entity_id: /light/
-              area: Bedroom
             - domain: light
               area: Bedroom
               options:
@@ -90,9 +78,6 @@ cards:
         card_param: entities
         filter:
           include:
-            - domain: switch
-              entity_id: /light/
-              area: Office
             - domain: light
               area: Office
               options:
@@ -109,9 +94,6 @@ cards:
         card_param: entities
         filter:
           include:
-            - domain: switch
-              entity_id: /light/
-              area: Breezeway
             - domain: light
               area: Breezeway
               options:

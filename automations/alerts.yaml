@@ -94,8 +94,8 @@
       entity_id: binary_sensor.garage_door
   condition:
     condition: state
-    entity_id: alarm_control_panel.aarlo_annacar_arlo
-    state: "armed_away"
+    entity_id: input_select.house_state
+    state: "away"
   action:
     - service: aarlo.sirens_on
       data:
