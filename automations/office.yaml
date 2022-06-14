@@ -22,8 +22,6 @@
         language: en-GB
     - service: light.turn_on
       entity_id: light.office_lights
-    - service: switch.turn_on
-      entity_id: switch.office_studio_monitors
   mode: single
 
 - alias: Carson Mac Screen On Desk
@@ -77,11 +75,37 @@
       entity_id: switch.office_studio_monitors
   mode: single
 
-- alias: Carson Mac Webcam Active
+- alias: Carson Mac Webcam On
   trigger:
     - platform: state
       entity_id: binary_sensor.carson_mac_camera_in_use
       to: "on"
+  action:
+    - service: input_select.select_option
+      data:
+        option: meeting
+      target:
+        entity_id: input_select.office_state
+  mode: queued
+
+- alias: Carson Mac Webcam Off
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.carson_mac_camera_in_use
+      to: "off"
+  action:
+    - service: input_select.select_option
+      data:
+        option: active
+      target:
+        entity_id: input_select.office_state
+  mode: queued
+
+- alias: Office Meeting On
+  trigger:
+    - platform: state
+      entity_id: input_select.office_state
+      to: "meeting"
   action:
     - service: light.turn_on
       data:
@@ -90,11 +114,11 @@
         entity_id: light.office_stairs
   mode: queued
 
-- alias: Carson Mac Webcam Inactive
+- alias: Office Meeting Off
   trigger:
     - platform: state
-      entity_id: binary_sensor.carson_mac_camera_in_use
-      to: "off"
+      entity_id: input_select.office_state
+      to: "active"
   action:
     - service: light.turn_on
       data:
@@ -134,7 +158,17 @@
       to: "on"
   action:
     - choose:
-        # IF morning
+        - conditions:
+            - condition: template
+              value_template: "{{ is_state('input_select.office_state', 'meeting') }}"
+            - condition: template
+              value_template: "{{ is_state('sensor.carson_mac_screen_off', 'False')}}"
+          sequence:
+            - service: light.turn_on
+              data:
+                brightness: 255
+                rgb_color: [255, 0, 0]
+                entity_id: light.office_stairs
         - conditions:
             - condition: template
               value_template: "{{ is_state('binary_sensor.carson_mac_camera_in_use', 'on') }}"
