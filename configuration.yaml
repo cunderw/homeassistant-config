@@ -45,15 +45,7 @@ logger:
   default: error
   logs:
     pychromecast.socket_client: fatal
-    # zigpy: debug
-    # zigpy_deconz.zigbee.application: debug
-    # zigpy_deconz.api: debug
-    # zigpy_xbee.zigbee.application: debug
-    # zigpy_xbee.api: debug
-    # zigpy_zigate: debug
-    # zigpy_znp: debug
-    # zhaquirks: debug
-
+    blueprints.cunderw.target_temperature_adjustment: info
 mqtt:
   discovery: true
   discovery_prefix: homeassistant

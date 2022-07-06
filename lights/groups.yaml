@@ -15,6 +15,13 @@
     - light.breezeway_ceiling
 
 - platform: group
+  unique_id: "1c838996-c227-4901-a2d6-cd38aa33fd6d"
+  name: Dining Room Lights
+  entities:
+    - light.dining_room_ceiling
+    - light.dining_room_floor_lamp
+
+- platform: group
   unique_id: "ba65d1ba-bf3c-11ec-9d64-0242ac120002"
   name: Living Room TV
   entities:

@@ -26,3 +26,20 @@
     - service: switch.turn_off
       entity_id: switch.back_driveway_floodlight
   
+- alias: Pool Pump Control
+  trigger:
+    - platform: time
+      at: '08:00:00'
+    - platform: time
+      at: '17:00:00'
+    - platform: homeassistant
+      event: start
+  action:
+    - service: >
+        {% set n = now() %}
+        {% if n.hour >= 8 and n.hour < 17 %}
+          switch.turn_on
+        {% else %}
+          switch.turn_off
+        {% endif %}
+      entity_id: switch.pool_pump

@@ -3,7 +3,7 @@
     fan.breezeway_ceiling_fan:
       state: "off"
     input_select.house_state: night
-    light.bedroom_bathroom_vanity_lights:
+    light.bedroom_bathroom_vanity:
       state: "off"
     light.bedroom_bedside_lamps:
       state: "on"
@@ -12,14 +12,13 @@
       xy_color: [0.477, 0.196]
     light.bedroom_ceiling:
       state: "off"
+    light.bedroom_floor_lamp:
+      state: "off"
     light.breezeway_lights:
       state: "off"
     light.downstairs_lights:
       state: "off"
     light.iris:
-      state: "on"
-      brightness: 59
-      color_mode: "xy"
-      xy_color: [0.477, 0.196]
+      state: "off"
     light.nursery_lights:
       state: "off"

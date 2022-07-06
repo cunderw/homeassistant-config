@@ -1,0 +1,112 @@
+12e66cbbd7cda6554aa5c8b368c547a0:
+  disabled: false
+  floor: ''
+  icon: mdi:bed
+  sort_order: 6
+44ccc4371719d61b9de8a5c0bdd69609:
+  disabled: false
+  floor: ''
+  icon: mdi:stove
+  sort_order: 4
+652d87a2751a087efb0af9cf711e8300:
+  disabled: false
+  floor: ''
+  icon: mdi:desktop-classic
+  sort_order: 7
+7933d47f412fffc9dc8f81254a31ef65:
+  disabled: false
+  floor: ''
+  icon: mdi:barn
+  sort_order: 15
+a29081a9a8af93625bb1c7c19b85a48e:
+  disabled: false
+  floor: ''
+  icon: mdi:door
+  sort_order: 12
+b0f1bea6a3c184c49c5827a85ef1c602:
+  disabled: false
+  floor: ''
+  icon: mdi:sofa
+  sort_order: 3
+b213c1c84b9af057ade89ffd31085b2a:
+  disabled: false
+  floor: ''
+  icon: mdi:pine-tree
+  sort_order: 14
+b3f84128e874d836daced2d1c71543a3:
+  disabled: false
+  floor: ''
+  icon: mdi:table-furniture
+  sort_order: 5
+bedroom_bathroom:
+  disabled: false
+  floor: ''
+  icon: mdi:toilet
+  sort_order: 17
+c27886b2666388c54cbf084fdf23288e:
+  disabled: false
+  floor: ''
+  icon: mdi:shield-crown
+  sort_order: 1
+c2d21ffcf579d4348c60702954b8d992:
+  disabled: false
+  floor: ''
+  icon: mdi:cellphone
+  sort_order: 19
+craft_room:
+  disabled: false
+  floor: ''
+  icon: mdi:view-quilt
+  sort_order: 8
+d7bf358e9e39ac6945b4f37d097740e7:
+  disabled: false
+  floor: ''
+  icon: mdi:grill
+  sort_order: 13
+downstairs:
+  disabled: true
+  floor: ''
+  icon: ''
+garage:
+  disabled: false
+  floor: ''
+  icon: mdi:garage
+  sort_order: 11
+guest_room:
+  disabled: false
+  floor: ''
+  icon: mdi:bed-empty
+  sort_order: 18
+hue_lights:
+  disabled: true
+  floor: ''
+  icon: ''
+laundry_room:
+  disabled: false
+  floor: ''
+  icon: mdi:dishwasher
+  sort_order: 9
+nursery:
+  disabled: false
+  floor: ''
+  icon: mdi:cradle
+  sort_order: 10
+office_bathroom:
+  disabled: false
+  floor: ''
+  icon: mdi:toilet
+  sort_order: 16
+people:
+  disabled: false
+  floor: ''
+  icon: mdi:account-group
+  sort_order: 2
+scenes:
+  disabled: true
+  floor: ''
+  icon: ''
+  sort_order: 14
+upstairs:
+  disabled: true
+  floor: ''
+  icon: ''

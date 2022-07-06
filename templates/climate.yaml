@@ -1,22 +1,22 @@
 - sensor:
-  - name: "Upstairs Temp"
-    device_class: temperature
-    state_class: measurement
-    unit_of_measurement: "°F"
-    state: >
-      {% set office = states('sensor.office_climate_temperature') | float %}
-      {% set bathroom = states('sensor.office_bathroom_motion_sensor_temperature') | float %}
+    - name: "Upstairs Temp"
+      device_class: temperature
+      state_class: measurement
+      unit_of_measurement: "°F"
+      state: >
+        {% set office = states('sensor.office_climate_temperature') | float %}
+        {% set bathroom = states('sensor.office_bathroom_motion_sensor_temperature') | float %}
 
-      {{ ((office + bathroom) / 2) | round(1) }}
+        {{ ((office + bathroom) / 2) | round() }}
 
 - sensor:
-  - name: "Downstairs Temp"
-    device_class: temperature
-    state_class: measurement
-    unit_of_measurement: "°F"
-    state: >
-      {% set kitchen = state_attr('climate.downstairs_thermostat', 'current_temperature') | float| float %}
-      {% set bedroom = states('sensor.bedroom_climate_temperature') | float %}
-      {% set bedroom_bathroom = states('sensor.bedroom_bathroom_motion_sensor_temperature') | float %}
+    - name: "Downstairs Temp"
+      device_class: temperature
+      state_class: measurement
+      unit_of_measurement: "°F"
+      state: >
+        {% set kitchen = state_attr('climate.downstairs_thermostat', 'current_temperature') | float| float %}
+        {% set bedroom = states('sensor.bedroom_climate_temperature') | float %}
+        {% set bedroom_bathroom = states('sensor.bedroom_bathroom_motion_sensor_temperature') | float %}
 
-      {{ ((kitchen + bedroom + bedroom_bathroom) / 3) | round(1) }}
+        {{ ((kitchen + bedroom + bedroom_bathroom) / 3) | round() }}

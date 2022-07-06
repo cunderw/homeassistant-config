@@ -7,17 +7,17 @@ cards:
     cards:
       - type: vertical-stack
         cards:
-        - type: custom:auto-entities
-          card:
-            type: vertical-stack
-            title: Inputs
-          card_param: cards
-          filter:
-            include:
-              - domain: input_number
-                options:
-                  type: custom:numberbox-card
-            exclude: []
+          - type: custom:auto-entities
+            card:
+              type: vertical-stack
+              title: Inputs
+            card_param: cards
+            filter:
+              include:
+                - domain: input_number
+                  options:
+                    type: custom:numberbox-card
+              exclude: []
       - type: vertical-stack
         title: Batteries
         cards:
@@ -129,4 +129,4 @@ cards:
                     type: history-graph
                     entities:
                       - this.entity_id
-              exclude: []   
+              exclude: []

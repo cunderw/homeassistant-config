@@ -1,0 +1,5 @@
+disable_clock: false
+disable_welcome_message: false
+v2_mode: false
+weather_entity: ''
+alarm_entity: alarm_control_panel.aarlo_annacar_arlo
