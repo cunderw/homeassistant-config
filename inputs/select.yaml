@@ -1,17 +1,26 @@
 house_state:
-    name: House State
-    options:
-      - home
-      - away
-      - night
-    initial: home
-    icon: mdi:home-modern
+  name: House State
+  options:
+    - home
+    - away
+    - night
+  initial: home
+  icon: mdi:home-modern
 
 office_state:
-    name: Office State
-    options:
-      - active
-      - inactive
-      - meeting
-    initial: inactive
-    icon: mdi:home-modern
+  name: Office State
+  options:
+    - active
+    - inactive
+    - meeting
+  initial: inactive
+  icon: mdi:home-modern
+
+carson_status:
+  name: Carson Status
+  options:
+    - carson_home
+    - carson_driving
+    - carson_walking
+  initial: carson_home
+  icon: mdi:account

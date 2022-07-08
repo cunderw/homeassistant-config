@@ -8,8 +8,8 @@
     light.bedroom_bedside_lamps:
       state: "on"
       brightness: 59
-      color_mode: "xy"
-      xy_color: [0.477, 0.196]
+      color_mode: "hs"
+      hs_color: [299.754, 95.686]
     light.bedroom_ceiling:
       state: "off"
     light.bedroom_floor_lamp:
@@ -19,6 +19,9 @@
     light.downstairs_lights:
       state: "off"
     light.iris:
-      state: "off"
+      state: "on"
+      brightness: 59
+      color_mode: "hs"
+      hs_color: [299.754, 95.686]
     light.nursery_lights:
       state: "off"

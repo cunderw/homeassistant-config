@@ -64,6 +64,22 @@
       entity_id: scene.arriving_home
   mode: single
 
+- alias: Carson Driving Home
+  trigger:
+    platform: state
+    entity_id: device_tracker.carson_phone_2
+    from: "not_home"
+    to: "home"
+  condition: "{{ is_state('input_select.carson_status', 'carson_driving') }}"
+  action:
+    - service: cover.open_cover
+      entity_id: cover.garage_bay_2
+    - service: input_select.select_option
+      data:
+        option: carson_home
+      target:
+        entity_id: input_select.carson_status
+
 #################################################
 #  Device Alerts
 #################################################
@@ -108,7 +124,6 @@
             - service: lock.lock
               entity_id: lock.front_door_lock
   mode: single
-
 
 - alias: Lock Doors
   trigger:

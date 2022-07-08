@@ -1,5 +1,6 @@
 - sensor:
     - name: "Upstairs Temp"
+      unique_id: 'e0a49513-4b80-4d16-821a-7788f0885212'
       device_class: temperature
       state_class: measurement
       unit_of_measurement: "°F"
@@ -11,6 +12,7 @@
 
 - sensor:
     - name: "Downstairs Temp"
+      unique_id: 'c56bd1b9-f347-452e-af6d-4fc54c6fc84a'
       device_class: temperature
       state_class: measurement
       unit_of_measurement: "°F"

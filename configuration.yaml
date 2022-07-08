@@ -46,6 +46,10 @@ logger:
   logs:
     pychromecast.socket_client: fatal
     blueprints.cunderw.target_temperature_adjustment: info
+    homeassistant.components.stream.stream.camera.bedroom_camera: fatal
+    homeassistant.components.stream.stream.camera.office_camera: fatal
+    homeassistant.components.stream.stream.camera.living_room_camera: fatal
+    homeassistant.components.stream.stream.camera.dining_room_camera: fatal
 mqtt:
   discovery: true
   discovery_prefix: homeassistant
