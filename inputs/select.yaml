@@ -24,3 +24,12 @@ carson_status:
     - carson_walking
   initial: carson_home
   icon: mdi:account
+
+anna_status:
+  name: Anna Status
+  options:
+    - anna_home
+    - anna_driving
+    - anna_walking
+  initial: anna_home
+  icon: mdi:account

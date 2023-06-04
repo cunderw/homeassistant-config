@@ -40,6 +40,8 @@
   action:
     - service: light.turn_on
       entity_id: light.breezeway_doors
+    - service: switch.turn_on
+      entity_id: switch.back_driveway_floodlight
   condition:
     alias: "Sun down"
     condition: state

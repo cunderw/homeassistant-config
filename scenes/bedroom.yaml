@@ -20,8 +20,8 @@
       state: "off"
     light.iris:
       state: "on"
-      brightness: 59
-      color_mode: "hs"
-      hs_color: [299.754, 95.686]
+      brightness: 130
+      color_mode: "rgb"
+      rgb_color: [255, 43, 49]
     light.nursery_lights:
       state: "off"

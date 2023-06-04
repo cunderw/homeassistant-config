@@ -5,7 +5,6 @@
     - light.bedroom_bedside_lamps
     - light.bedroom_ceiling
     - light.bedroom_floor_lamp
-    - light.iris
 
 - platform: group
   unique_id: "b3e17b50-bf3c-11ec-9d64-0242ac120002"
@@ -36,6 +35,7 @@
   entities:
     - light.living_room_tv
     - light.living_room_group
+    - light.iris
 
 - platform: group
   unique_id: "c499ecca-bf3c-11ec-9d64-0242ac120002"

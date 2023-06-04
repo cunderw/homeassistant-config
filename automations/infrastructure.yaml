@@ -14,13 +14,7 @@
       to: "off"
       for: "00:05:00"
   action:
-    - service: notify.mobile_app_carson_phone
-      data:
-        message: "Unraid went down!"
-    - service: notify.mobile_app_carson_ipad
-      data:
-        message: "Unraid went down!"
-    - service: notify.mobile_app_carson_mac
+    - service: notify.mobile_app_carson_iphone
       data:
         message: "Unraid went down!"
     - service: shell_command.restart_unraid

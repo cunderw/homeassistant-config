@@ -2,6 +2,7 @@
 # carson-mac
 #################################################
 - alias: Carson Mac Screen On Lights
+  id: 762c87ac-d6b7-46f4-a4db-851bf5fb7d17
   trigger:
     - platform: state
       entity_id: sensor.carson_mac_screen_off
@@ -31,13 +32,6 @@
       from: "True"
       to: "False"
   action:
-    - service: tts.cloud_say
-      entity_id: media_player.office_clock
-      data:
-        message: Hello Carson!
-        options:
-          gender: female
-        language: en-GB
     - service: light.turn_on
       entity_id: light.office_carson_desk
     - service: switch.turn_on
@@ -138,7 +132,7 @@
       to: "on"
   action:
     - service: light.turn_on
-      entity_id: light.office_bathroom_lights
+      entity_id: light.office_bathroom
 
 - alias: Office Bathroom Vacant
   trigger:
@@ -148,7 +142,7 @@
       for: "00:15:00"
   action:
     - service: light.turn_off
-      entity_id: light.office_bathroom_lights
+      entity_id: light.office_bathroom
 
 - alias: Office Stairs Motion
   trigger:

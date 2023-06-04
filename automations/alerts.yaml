@@ -8,12 +8,12 @@
       from: "off"
       to: "on"
   action:
-    - service: rest_command.google_assistant_broadcast
-      data:
-        command: Someone is at the front door
     - service: notify.all_personal_devices
       data:
         message: "Someone is at the front door!"
+    - service: notify.google_assistant_sdk
+      data:
+        message: Someone is at the front door 
 
 - alias: Announce Front Door Open
   trigger:
@@ -23,12 +23,12 @@
       to: "on"
       for: "00:00:01"
   action:
-    - service: rest_command.google_assistant_broadcast
-      data:
-        command: "Front Door Is Open"
     - service: notify.all_personal_devices
       data:
         message: "Front door is open!"
+    - service: notify.google_assistant_sdk
+      data:
+        message: Front door is open 
   mode: single
 
 - alias: Announce Garage Door Open
@@ -39,12 +39,12 @@
       to: "on"
       for: "00:00:01"
   action:
-    - service: rest_command.google_assistant_broadcast
-      data:
-        command: "Garage Door Is Open"
     - service: notify.all_personal_devices
       data:
         message: "Garage door is open!"
+    - service: notify.google_assistant_sdk
+      data:
+        message: Garage door is open 
   mode: single
 
 - alias: Announce Bedroom Door Open
@@ -55,12 +55,12 @@
       to: "on"
       for: "00:00:01"
   action:
-    - service: rest_command.google_assistant_broadcast
-      data:
-        command: "Bedroom Door Is Open"
     - service: notify.all_personal_devices
       data:
         message: "Bedroom door is open!"
+    - service: notify.google_assistant_sdk
+      data:
+        message: Bedroom door is open 
   mode: single
 
 - alias: Announce Launry Room Door Open
@@ -71,12 +71,12 @@
       to: "on"
       for: "00:00:01"
   action:
-    - service: rest_command.google_assistant_broadcast
-      data:
-        command: "Laundry Room Door Is Open"
     - service: notify.all_personal_devices
       data:
         message: "Laundry room door is open!"
+    - service: notify.google_assistant_sdk
+      data:
+        message: Laundry room door is open 
   mode: single
 
 - alias: Door Alarm When Away

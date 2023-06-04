@@ -23,3 +23,6 @@ core.*
 hass-emulated-hue/
 python_scripts/
 blueprints
+zigbee.db-journal
+zigbee.db-wal
+zigbee.db-shm

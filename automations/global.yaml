@@ -67,7 +67,7 @@
 - alias: Carson Driving Home
   trigger:
     platform: state
-    entity_id: device_tracker.carson_phone_2
+    entity_id: device_tracker.carson_phone
     from: "not_home"
     to: "home"
   condition: "{{ is_state('input_select.carson_status', 'carson_driving') }}"
@@ -80,6 +80,22 @@
       target:
         entity_id: input_select.carson_status
 
+- alias: Anna Driving Home
+  trigger:
+    platform: state
+    entity_id: device_tracker.anna_phone
+    from: "not_home"
+    to: "home"
+  condition: "{{ is_state('input_select.anna_status', 'anna_driving') }}"
+  action:
+    - service: cover.open_cover
+      entity_id: cover.garage_bay_1
+    - service: input_select.select_option
+      data:
+        option: anna_home
+      target:
+        entity_id: input_select.anna_status
+
 #################################################
 #  Device Alerts
 #################################################
@@ -88,13 +104,7 @@
     path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
     input:
       actions:
-        - service: notify.mobile_app_carson_phone
-          data:
-            message: "{{sensors}} have low battery!"
-        - service: notify.mobile_app_carson_ipad
-          data:
-            message: "{{sensors}} have low battery!"
-        - service: notify.mobile_app_carson_mac
+        - service: notify.mobile_app_carson_iphone
           data:
             message: "{{sensors}} have low battery!"
       threshold: 10

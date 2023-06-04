@@ -57,6 +57,6 @@
             - "{{ command == 'off_short_release' }}"
           sequence:
             - service: light.toggle
-              entity_id: light.iris
+              entity_id: light.nursery_lights
   mode: queued
   max_exceeded: silent

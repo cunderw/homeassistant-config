@@ -14,16 +14,14 @@ homeassistant:
   name: Annacar Home
   time_zone: !secret time_zone
   unit_system: !secret unit_system
+  country: US
+  currency: USD
 
 #################################################
 # Enable Services
 #################################################
 frontend:
   themes: !include_dir_merge_named themes
-
-google:
-  client_id: !secret google_id
-  client_secret: !secret google_secret
 
 http:
   use_x_forwarded_for: true
@@ -50,9 +48,6 @@ logger:
     homeassistant.components.stream.stream.camera.office_camera: fatal
     homeassistant.components.stream.stream.camera.living_room_camera: fatal
     homeassistant.components.stream.stream.camera.dining_room_camera: fatal
-mqtt:
-  discovery: true
-  discovery_prefix: homeassistant
 
 python_script:
 
