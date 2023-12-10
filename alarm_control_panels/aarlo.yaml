@@ -1,6 +1,0 @@
-- platform: aarlo
-  away_mode_name: away
-  home_mode_name: armed
-  night_mode_name: away
-  trigger_time: 30
-  alarm_volume: 8

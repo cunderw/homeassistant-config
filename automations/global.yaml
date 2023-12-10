@@ -11,6 +11,8 @@
       entity_id: switch.front_porch
     - service: switch.turn_off
       entity_id: switch.front_driveway_lights
+    - service: light.turn_off
+      entity_id: light.front_porch_strips
 
 - alias: "Sun Set"
   trigger:
@@ -22,6 +24,8 @@
       entity_id: switch.front_porch
     - service: switch.turn_on
       entity_id: switch.front_driveway_lights
+    - service: light.turn_on
+      entity_id: light.front_porch_strips
 
 #################################################
 # Location & Alarms
@@ -64,37 +68,37 @@
       entity_id: scene.arriving_home
   mode: single
 
-- alias: Carson Driving Home
-  trigger:
-    platform: state
-    entity_id: device_tracker.carson_phone
-    from: "not_home"
-    to: "home"
-  condition: "{{ is_state('input_select.carson_status', 'carson_driving') }}"
-  action:
-    - service: cover.open_cover
-      entity_id: cover.garage_bay_2
-    - service: input_select.select_option
-      data:
-        option: carson_home
-      target:
-        entity_id: input_select.carson_status
+# - alias: Carson Driving Home
+#   trigger:
+#     platform: state
+#     entity_id: device_tracker.carson_phone
+#     from: "not_home"
+#     to: "home"
+#   condition: "{{ is_state('input_select.carson_status', 'carson_driving') }}"
+#   action:
+#     - service: cover.open_cover
+#       entity_id: cover.garage_bay_2
+#     - service: input_select.select_option
+#       data:
+#         option: carson_home
+#       target:
+#         entity_id: input_select.carson_status
 
-- alias: Anna Driving Home
-  trigger:
-    platform: state
-    entity_id: device_tracker.anna_phone
-    from: "not_home"
-    to: "home"
-  condition: "{{ is_state('input_select.anna_status', 'anna_driving') }}"
-  action:
-    - service: cover.open_cover
-      entity_id: cover.garage_bay_1
-    - service: input_select.select_option
-      data:
-        option: anna_home
-      target:
-        entity_id: input_select.anna_status
+# - alias: Anna Driving Home
+#   trigger:
+#     platform: state
+#     entity_id: device_tracker.anna_phone
+#     from: "not_home"
+#     to: "home"
+#   condition: "{{ is_state('input_select.anna_status', 'anna_driving') }}"
+#   action:
+#     - service: cover.open_cover
+#       entity_id: cover.garage_bay_1
+#     - service: input_select.select_option
+#       data:
+#         option: anna_home
+#       target:
+#         entity_id: input_select.anna_status
 
 #################################################
 #  Device Alerts
@@ -135,6 +139,9 @@
               entity_id: lock.front_door_lock
   mode: single
 
+#################################################
+# House State 
+#################################################
 - alias: Lock Doors
   trigger:
     - platform: state

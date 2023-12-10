@@ -24,6 +24,21 @@
   mode: single
 
 #################################################
+# Doors 
+#################################################
+- alias: Garage Hallway Door Open 
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_hallway_door_opening
+      from: "off"
+      to: "on"
+      for: "00:00:01"
+  action:
+    - service: light.turn_on
+      entity_id: light.garage_lights
+  mode: single
+
+#################################################
 # Motion
 #################################################
 - alias: Garage Hallway Motion

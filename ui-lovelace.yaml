@@ -2,7 +2,6 @@ title: Home
 views:
   - !include /config/lovelace/main.yaml
   - !include /config/lovelace/lights.yaml
-  - !include /config/lovelace/media.yaml
   - !include /config/lovelace/cameras.yaml
   - !include /config/lovelace/config.yaml
 

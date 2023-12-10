@@ -43,7 +43,6 @@ logger:
   default: error
   logs:
     pychromecast.socket_client: fatal
-    blueprints.cunderw.target_temperature_adjustment: info
     homeassistant.components.stream.stream.camera.bedroom_camera: fatal
     homeassistant.components.stream.stream.camera.office_camera: fatal
     homeassistant.components.stream.stream.camera.living_room_camera: fatal
@@ -55,14 +54,6 @@ recorder:
   db_url: !secret db_url
 
 stream:
-
-tts:
-  - platform: google_translate
-    cache: true
-    cache_dir: /tmp/tts
-    time_memory: 300
-    base_url: !secret google_tts_url
-    service_name: google_say
 
 #################################################
 # Include External Scripts

@@ -1,5 +1,0 @@
-upstairs_temp:
-  name: Upstairs Target Temperature
-  min: 60
-  max: 85
-  step: 1

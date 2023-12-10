@@ -47,6 +47,22 @@
         message: Garage door is open 
   mode: single
 
+- alias: Announce Garage Hallway Door Open
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_hallway_door_opening
+      from: "off"
+      to: "on"
+      for: "00:00:01"
+  action:
+    - service: notify.all_personal_devices
+      data:
+        message: "Garage door is open!"
+    - service: notify.google_assistant_sdk
+      data:
+        message: Garage door is open 
+  mode: single
+
 - alias: Announce Bedroom Door Open
   trigger:
     - platform: state

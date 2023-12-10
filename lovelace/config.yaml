@@ -68,6 +68,8 @@ cards:
                   attributes:
                     device_class: battery
                   device: /Climate|Thermostat/
+              exclude:
+                - device: /Start-up/
       - type: vertical-stack
         cards:
           - type: custom:auto-entities
