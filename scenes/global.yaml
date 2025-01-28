@@ -61,14 +61,19 @@
     light.nursery_lights:
       state: "on"
 
-- name: Bedtime
+- name: Sleep
   entities:
     fan.breezeway_ceiling_fan:
       state: "off"
     input_select.house_state: night
     light.bedroom_bathroom_vanity:
       state: "off"
-    light.bedroom_bedside_lamps:
+    light.bedroom_anna_lamp:
+      state: "on"
+      brightness: 5
+      color_mode: "xy"
+      xy_color: [0.697993, 0.299992]
+    light.bedroom_carson_lamp:
       state: "on"
       brightness: 5
       color_mode: "xy"
@@ -86,5 +91,8 @@
       brightness: 130
       color_mode: "xy"
       rgb_color: [255, 43, 49]
+    light.kitchen_sink:
+      state: "on"
+      brightness: "130"
     light.nursery_lights:
       state: "off"

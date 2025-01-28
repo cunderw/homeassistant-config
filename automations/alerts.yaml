@@ -1,7 +1,7 @@
 #################################################
 # Door Alerts
 #################################################
-- alias: Someone Is At The Front Door
+- alias: Announce Someone Is At The Front Door
   trigger:
     - platform: state
       entity_id: binary_sensor.aarlo_ding_front_doorbell

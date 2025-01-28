@@ -114,6 +114,292 @@ cards:
                 entity: climate.downstairs_thermostat
               - type: thermostat
                 entity: climate.upstairs_thermostat
+          - type: glance
+            show_name: false
+            show_icon: true
+            show_state: true
+            title: Weather Station
+            theme: macOS Theme
+            columns: 4
+            entities:
+              - entity: sensor.weather_station_temperature
+              - entity: sensor.weather_station_feels_like
+              - entity: sensor.weather_station_absolute_pressure
+              - entity: sensor.weather_station_relative_pressure
+              - entity: sensor.weather_station_humidity
+              - entity: sensor.weather_station_dew_point
+              - entity: sensor.weather_station_wind_direction
+              - entity: sensor.weather_station_wind_gust
+              - entity: sensor.weather_station_wind_speed
+              - entity: sensor.weather_station_max_gust
+              - entity: sensor.weather_station_event_rain
+              - entity: sensor.weather_station_daily_rain
+              - entity: sensor.weather_station_solar_rad_lx
+              - entity: sensor.weather_station_irradiance
+              - entity: sensor.weather_station_precipitation_intensity
+              - entity: sensor.weather_station_uv_index
+              - entity: sensor.weather_station_last_rain
+              - entity: sensor.weather_station_weekly_rain
+              - entity: sensor.weather_station_monthly_rain
+              - entity: sensor.weather_station_yearly_rain
+              - entity: sensor.weather_station_inside_temperature
+              - entity: sensor.weather_station_humidity_indoor
+          # Appliances
+          - type: vertical-stack
+            cards:
+              - type: picture-elements
+                elements:
+                  - type: image
+                    entity: sensor.dishwasher_process_state
+                    image: /local/lg-icons/dry-plate.png
+                    state_image:
+                      Drying: /local/lg-icons/dry-plate-on.png
+                    style:
+                      top: 33%
+                      left: 85%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.dishwasher_process_state
+                    image: /local/lg-icons/wash-plate.png
+                    state_image:
+                      Washing: /local/lg-icons/wash-plate-on.png
+                    style:
+                      top: 33%
+                      left: 51%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.dishwasher_process_state
+                    image: /local/lg-icons/rinse-plate.png
+                    state_image:
+                      Rinsing: /local/lg-icons/rinse-plate-on.png
+                    style:
+                      top: 33%
+                      left: 69%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.dishwasher
+                    image: /local/lg-icons/wifi.png
+                    state_image:
+                      "on": /local/lg-icons/wifi-on.png
+                    style:
+                      top: 73%
+                      left: 32%
+                      width: 10%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.dishwasher_door_open
+                    image: /local/lg-icons/lock.png
+                    state_image:
+                      "off": /local/lg-icons/lock-on.png
+                    style:
+                      top: 73%
+                      left: 45%
+                      width: 10%
+                      image-rendering: crisp
+                  - type: state-label
+                    entity: sensor.dishwasher_remaining_time
+                    style:
+                      font-size: 50px
+                      left: 95%
+                      top: 74%
+                      transform: translate(-100%,-50%)
+                image: /local/hass-dishwasher-card-bg.png
+              - type: conditional
+                conditions:
+                  - entity: sensor.dishwasher_run_state
+                    state_not: "-"
+                card:
+                  type: entities
+                  entities:
+                    - entity: sensor.dishwasher
+                      type: attribute
+                      attribute: process_state
+                      name: Current Activity
+                      icon: mdi:tune-vertical-variant
+                    - entity: sensor.dishwasher
+                      type: attribute
+                      attribute: rinse_refill
+                      name: Rinse Aid Refill
+                      icon: mdi:blur
+                    - entity: sensor.dishwasher
+                      type: attribute
+                      attribute: energy_saver
+                      name: Energy Saver Mode
+                      icon: mdi:battery
+                    - entity: sensor.dishwasher
+                      type: attribute
+                      attribute: delay_start
+                      name: Delay Start
+                      icon: mdi:clock
+                    - entity: sensor.dishwasher
+                      type: attribute
+                      attribute: tubclean_count
+                      name: Washes Since Clean
+                      icon: mdi:creation
+                  state_color: false
+          - type: vertical-stack
+            cards:
+              - type: picture-elements
+                elements:
+                  - type: image
+                    entity: sensor.washer_run_state
+                    image: /local/lg-icons/sensing.png
+                    state_image:
+                      Detecting: /local/lg-icons/sensing-on.png
+                    style:
+                      top: 33%
+                      left: 33%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.washer_run_state
+                    image: /local/lg-icons/wash.png
+                    state_image:
+                      Washing: /local/lg-icons/wash-on.png
+                    style:
+                      top: 33%
+                      left: 51%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.washer_run_state
+                    image: /local/lg-icons/rinse.png
+                    state_image:
+                      Rinsing: /local/lg-icons/rinse-on.png
+                    style:
+                      top: 33%
+                      left: 69%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.washer_run_state
+                    image: /local/lg-icons/spin.png
+                    state_image:
+                      Spinning: /local/lg-icons/spin-on.png
+                    style:
+                      top: 33%
+                      left: 87%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.washer
+                    image: /local/lg-icons/wifi.png
+                    state_image:
+                      on: /local/lg-icons/wifi-on.png
+                    style:
+                      top: 73%
+                      left: 32%
+                      width: 10%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.washer_door_lock
+                    image: /local/lg-icons/lock.png
+                    state_image:
+                      on: /local/lg-icons/lock-on.png
+                    style:
+                      top: 73%
+                      left: 45%
+                      width: 10%
+                      image-rendering: crisp
+                  - type: state-label
+                    entity: sensor.washer_remaining_time
+                    style:
+                      font-size: 50px
+                      left: 95%
+                      top: 74%
+                      transform: "translate(-100%,-50%)"
+                image: /local/hass-washer-card-bg.png
+              - type: conditional
+                conditions:
+                  - entity: sensor.washer_run_state
+                    state_not: "-"
+                card:
+                  type: entities
+                  entities:
+                    - entity: sensor.washer
+                      type: attribute
+                      attribute: current_course
+                      name: Current Course
+                      icon: "mdi:tune-vertical-variant"
+                    - entity: sensor.washer
+                      type: attribute
+                      attribute: water_temp
+                      name: Water Temperature
+                      icon: "mdi:coolant-temperature"
+                    - entity: sensor.washer
+                      type: attribute
+                      attribute: spin_speed
+                      name: Spin Speed
+                      icon: "mdi:rotate-right"
+                  state_color: false
+          - type: vertical-stack
+            cards:
+              - type: picture-elements
+                elements:
+                  - type: image
+                    entity: sensor.dryer_run_state
+                    image: /local/lg-icons/dry.png
+                    state_image:
+                      Drying: /local/lg-icons/dry-on.png
+                    style:
+                      top: 33%
+                      left: 69%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.dryer_run_state
+                    image: /local/lg-icons/cool.png
+                    state_image:
+                      Cooling: /local/lg-icons/cool-on.png
+                    style:
+                      top: 33%
+                      left: 87%
+                      width: 20%
+                      image-rendering: crisp
+                  - type: image
+                    entity: sensor.dryer
+                    image: /local/lg-icons/wifi.png
+                    state_image:
+                      "on": /local/lg-icons/wifi-on.png
+                    style:
+                      top: 73%
+                      left: 32%
+                      width: 10%
+                      image-rendering: crisp
+
+                  - type: state-label
+                    entity: sensor.dryer_remaining_time
+                    style:
+                      font-size: 50px
+                      left: 95%
+                      top: 74%
+                      transform: "translate(-100%,-50%)"
+                image: /local/hass-dryer-card-bg.png
+              - type: conditional
+                conditions:
+                  - entity: sensor.dryer_run_state
+                    state_not: "-"
+                card:
+                  type: entities
+                  entities:
+                    - entity: sensor.dryer
+                      type: attribute
+                      attribute: current_course
+                      name: Current Course
+                      icon: "mdi:tune-vertical-variant"
+                    - entity: sensor.dryer
+                      type: attribute
+                      attribute: temp_control
+                      name: Temperature Control
+                      icon: "mdi:thermometer"
+                    - entity: sensor.dryer
+                      type: attribute
+                      attribute: dry_level
+                      name: Dry Level
+                      icon: "mdi:air-filter"
           # Media
           - type: custom:auto-entities
             card:

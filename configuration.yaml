@@ -5,7 +5,7 @@ default_config:
 homeassistant:
   allowlist_external_dirs:
     - /tmp
-  customize: !include_dir_merge_named customize/
+  # customize: !include_dir_merge_named customize/
   elevation: !secret elevation
   external_url: !secret external_url
   internal_url: !secret internal_url
@@ -59,22 +59,22 @@ stream:
 # Include External Scripts
 #################################################
 aarlo: !include /config/aarlo/aarlo.yaml
-alarm_control_panel: !include_dir_merge_list alarm_control_panels/
+# alarm_control_panel: !include_dir_merge_list alarm_control_panels/
 automation: !include_dir_merge_list automations/
-binary_sensor: !include_dir_merge_list binary_sensors/
+# binary_sensor: !include_dir_merge_list binary_sensors/
 camera: !include_dir_merge_list cameras/
 group: !include_dir_merge_named groups/
-input_number: !include /config/inputs/numbers.yaml
-input_select: !include /config/inputs/select.yaml
+# input_number: !include /config/inputs/numbers.yaml
+input_select: !include inputs/select.yaml
 light: !include_dir_merge_list lights/
-media_player: !include_dir_merge_list media_players/
+# media_player: !include_dir_merge_list media_players/
 notify: !include_dir_merge_list notifications/
 rest_command: !include_dir_merge_named rest_commands/
-sensor: !include_dir_merge_list sensors/
+# sensor: !include_dir_merge_list sensors/
 scene: !include_dir_merge_list scenes/
 script: !include_dir_merge_named scripts/
 shell_command: !include_dir_merge_named shell/
-switch: !include_dir_merge_list switches/
+# switch: !include_dir_merge_list switches/
 template: !include_dir_merge_list templates/
 
 #################################################

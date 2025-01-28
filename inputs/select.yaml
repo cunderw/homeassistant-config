@@ -10,10 +10,9 @@ house_state:
 office_state:
   name: Office State
   options:
-    - active
-    - inactive
     - meeting
-  initial: inactive
+    - normal
+  initial: normal 
   icon: mdi:home-modern
 
 carson_status:

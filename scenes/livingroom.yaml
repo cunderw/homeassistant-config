@@ -46,3 +46,44 @@
         - 255
         - 131
         - 118
+
+- name: Evening
+  entities:
+    light.living_room_corner_lamp:
+      state: "on"
+      brightness: 15
+      rgb_color:
+        - 255
+        - 131
+        - 118
+    light.living_room_tv:
+      state: "on"
+      brightness: 255
+      rgb_color:
+        - 255
+        - 131
+        - 118
+    light.dining_room_lights:
+      state: "off"
+    light.front_door_lights:
+      state: "off"
+    light.living_room_ceiling:
+      state: "off"
+    light.kitchen_island:
+      state: "off"
+    light.kitchen_ceiling:
+      state: "off"
+    light.kitchen_bar:
+      state: "off"
+    light.kitchen_hallway:
+      state: "off"
+    light.kitchen_sink:
+      state: "on"
+      brightness: 100
+    light.iris:
+      state: "on"
+      brightness: 100
+      rgb_color:
+        - 255
+        - 131
+        - 118

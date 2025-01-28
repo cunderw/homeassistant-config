@@ -4,7 +4,6 @@ views:
   - !include /config/lovelace/lights.yaml
   - !include /config/lovelace/cameras.yaml
   - !include /config/lovelace/config.yaml
-
 # theme settings
 # custom_header:
 #   compact_mode: true

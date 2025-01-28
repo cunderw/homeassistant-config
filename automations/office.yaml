@@ -7,24 +7,15 @@
       entity_id: sensor.carson_mac_screen_off
       from: "True"
       to: "False"
-  condition:
-    condition: state
-    entity_id:
-      - media_player.office_tv
-    state: "off"
   action:
-    - service: tts.cloud_say
-      entity_id: media_player.office_clock
-      data:
-        message: Hello Carson!
-        options:
-          gender: female
-        language: en-GB
     - service: input_select.select_option
       data:
         option: active
       target:
         entity_id: input_select.office_state
+    - service: switch.turn_on
+      entity_id: switch.office_studio_monitors
+      
   mode: single
 
 - alias: Office Carson Mac Screen Off
@@ -45,6 +36,8 @@
         option: inactive
       target:
         entity_id: input_select.office_state
+    - service: switch.turn_off
+      entity_id: switch.office_studio_monitors
   mode: single
 
 - alias: Office Carson Mac Webcam On
@@ -64,66 +57,38 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.carson_mac_camera_in_use
+      from: "on"
       to: "off"
   action:
     - service: input_select.select_option
       data:
-        option: active
+        option: normal 
       target:
         entity_id: input_select.office_state
   mode: queued
 
 #################################################
-# office-state
-#################################################
-- alias: Office State Active
-  trigger:
-    - platform: state
-      entity_id: input_select.office_state
-      from: "inactive"
-      to: "active"
-  action:
-    - service: scene.turn_on
-      entity_id: scene.office_active_day
-  mode: queued
-
-- alias: Office State Inactive
-  trigger:
-    - platform: state
-      entity_id: input_select.office_state
-      to: "inactive"
-  action:
-    - service: scene.turn_on
-      entity_id: scene.office_inactive
-  mode: queued
-
-#################################################
 # Motion
 #################################################
-- alias: Office Motion
+- alias: Office Occupied 
   trigger:
     - platform: state
-      entity_id: binary_sensor.office_motion_sensor_motion
+      entity_id: binary_sensor.office_motion_sensor_occupancy
       from: "off"
       to: "on"
   action:
-    - service: light.turn_on
-      entity_id: light.office_lights
+    - service: scene.turn_on
+      entity_id: scene.office_active
 
 - alias: Office Vacant
   trigger:
     - platform: state
       entity_id: binary_sensor.office_motion_sensor_occupancy
       to: "off"
-      for: "00:15:00"
-  condition:
-    condition: state
-    entity_id:
-      - input_select.office_state 
-    state: "inactive"
+      for: "01:00:00"
   action:
-    - service: light.turn_off
-      entity_id: light.office_lights
+    - service: scene.turn_on
+      entity_id: scene.office_inactive
 
 - alias: Office Bathroom Occupied
   trigger:
@@ -164,12 +129,12 @@
                 entity_id: light.office_stairs
         - conditions:
             - condition: template
-              value_template: "{{ is_state('input_select.office_state', 'active') }}"
+              value_template: "{{ is_state('input_select.office_state', 'normal') }}"
           sequence:
             - service: light.turn_on
               data:
                 brightness: 255
-                rgb_color: [0, 255, 0]
+                rgb_color: [255, 255, 255]
                 entity_id: light.office_stairs
       default:
         - service: light.turn_on

@@ -48,3 +48,20 @@
     entity_id: sun.sun
     state: "below_horizon"
   mode: single
+
+- alias: Laundry Room Door Closed
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.laundry_room_door
+      from: "on"
+      to: "off"
+      for: "00:10:00"
+  action:
+    - service: light.turn_off
+      entity_id: light.breezeway_doors
+  condition:
+    alias: "Sun down"
+    condition: state
+    entity_id: sun.sun
+    state: "below_horizon"
+  mode: single
