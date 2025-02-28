@@ -1,6 +1,5 @@
-title:
+title: Cameras
 icon: mdi:camera
-panel: true
 cards:
   - type: custom:auto-entities
     card:

@@ -1,7 +1,6 @@
-title:
+title: Home
 path: main
 icon: mdi:home
-panel: true
 cards:
   - type: custom:layout-card
     layout_type: custom:masonry-layout

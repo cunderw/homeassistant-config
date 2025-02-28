@@ -1,6 +1,5 @@
-title:
+title: Config
 icon: mdi:cog-box
-panel: true
 cards:
   - type: custom:layout-card
     layout_type: custom:masonry-layout

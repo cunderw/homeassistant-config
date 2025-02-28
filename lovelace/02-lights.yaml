@@ -1,6 +1,5 @@
-title:
+title: Lights
 icon: mdi:lightbulb-cfl
-panel: true
 cards:
   - type: custom:layout-card
     layout_type: custom:masonry-layout

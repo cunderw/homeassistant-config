@@ -12,6 +12,7 @@
   entities:
     - light.breezeway_doors
     - light.breezeway_ceiling
+    - light.breezeway_grill_light
 
 - platform: group
   unique_id: "1c838996-c227-4901-a2d6-cd38aa33fd6d"
