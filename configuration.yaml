@@ -53,6 +53,10 @@ python_script:
 recorder:
   db_url: !secret db_url
 
+zha:
+  zigpy_config:
+    source_routing: true
+    
 stream:
 
 #################################################

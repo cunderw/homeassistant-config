@@ -147,13 +147,9 @@
     - platform: state
       entity_id: input_select.house_state
       to: "away"
-      for:
-        seconds: 60
     - platform: state
       entity_id: input_select.house_state
       to: "night"
-      for:
-        seconds: 60
   condition: []
   action:
     - service: script.lock_doors

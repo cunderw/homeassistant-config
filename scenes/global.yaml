@@ -68,12 +68,7 @@
     input_select.house_state: night
     light.bedroom_bathroom_vanity:
       state: "off"
-    light.bedroom_anna_lamp:
-      state: "on"
-      brightness: 5
-      color_mode: "xy"
-      xy_color: [0.697993, 0.299992]
-    light.bedroom_carson_lamp:
+    light.bedroom_bedside_lamps:
       state: "on"
       brightness: 5
       color_mode: "xy"
