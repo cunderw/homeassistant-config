@@ -2,64 +2,64 @@
 # Media Scenes
 #######################
 - alias: Plex Play
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: media_player.living_room_plex
       from: idle
       to: playing
-    - platform: state
+    - trigger: state
       entity_id: media_player.living_room_plex
       from: paused
       to: playing
-    - platform: state
+    - trigger: state
       entity_id: media_player.plex_infuse_living_room
       from: idle
       to: playing
-    - platform: state
+    - trigger: state
       entity_id: media_player.plex_infuse_living_room
       from: paused
       to: playing
   condition: []
-  action:
-    - service: scene.turn_on
+  actions:
+    - action: scene.turn_on
       entity_id: scene.movie_time
   mode: single
 
 - alias: Plex Paused
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: media_player.living_room_plex
       from: playing
       to: paused
-    - platform: state
+    - trigger: state
       entity_id: media_player.plex_infuse_living_room
       from: playing
       to: paused
   condition: []
-  action:
-    - service: scene.turn_on
+  actions:
+    - action: scene.turn_on
       entity_id: scene.movie_time_paused
   mode: single
 
 - alias: Kitchen Controller
   mode: queued
   max_exceeded: silent
-  trigger:
-    - platform: event
+  triggers:
+    - trigger: event
       event_type: zha_event
       event_data:
         device_id: 03f2a8fc68acb2cc66e1f44da37c3515
-  action:
+  actions:
     - variables:
-        command: "{{ trigger.event.data.command }}"
+        command: "{{ triggers.event.data.command }}"
     - choose:
         - conditions:
             - "{{ command == 'on' }}"
           sequence:
-            - service: light.toggle
+            - action: light.toggle
               entity_id: light.kitchen_lights
         - conditions:
             - "{{ command == 'off' }}"
           sequence:
-            - service: light.toggle
+            - action: light.toggle
               entity_id: light.dining_room_lights

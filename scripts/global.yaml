@@ -4,14 +4,14 @@
 lock_doors:
   alias: Lock Doors
   sequence:
-    - service: lock.lock
+    - action: lock.lock
       entity_id: lock.laundry_room_door_lock
-    - service: lock.lock
+    - action: lock.lock
       entity_id: lock.front_door_lock
 unlock_doors:
   alias: Unlock Doors
   sequence:
-    - service: lock.unlock
+    - action: lock.unlock
       entity_id: lock.laundry_room_door_lock
-    - service: lock.unlock
+    - action: lock.unlock
       entity_id: lock.front_door_lock

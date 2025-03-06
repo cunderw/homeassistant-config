@@ -2,57 +2,57 @@
 # Bedroom Motion
 #################################################
 - alias: Bedroom Bathroom Occupied
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.bedroom_bathroom_occupancy
       from: "off"
       to: "on"
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.bedroom_bathroom_vanity
 
 - alias: Bedroom Bathroom Vacant
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.bedroom_bathroom_occupancy
       to: "off"
       for: "00:30:00"
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.bedroom_bathroom_vanity
 
 #################################################
 # Control
 #################################################
 - alias: Bedroom Controller
-  trigger:
-    - platform: event
+  triggers:
+    - trigger: event
       event_type: zha_event
       event_data:
         device_id: 38823d2ac8278565d4e1a71abe5eb7b1
-  action:
+  actions:
     - variables:
-        command: "{{ trigger.event.data.command }}"
+        command: "{{ triggers.event.data.command }}"
     - choose:
         - conditions:
             - "{{ command == 'on_short_release' }}"
           sequence:
-            - service: light.toggle
+            - action: light.toggle
               entity_id: light.bedroom_ceiling
         - conditions:
             - "{{ command == 'up_short_release' }}"
           sequence:
-            - service: light.toggle
+            - action: light.toggle
               entity_id: light.bedroom_bedside_lamps
         - conditions:
             - "{{ command == 'down_short_release' }}"
           sequence:
-            - service: switch.toggle
+            - action: switch.toggle
               entity_id: switch.bedroom_floor_lamp
         - conditions:
             - "{{ command == 'off_short_release' }}"
           sequence:
-            - service: light.toggle
+            - action: light.toggle
               entity_id: light.nursery_lights
   mode: queued
   max_exceeded: silent

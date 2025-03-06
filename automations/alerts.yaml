@@ -2,107 +2,106 @@
 # Door Alerts
 #################################################
 - alias: Announce Someone Is At The Front Door
-  id: 4abc7c23-3230-4ab2-9bb6-4479b1cad8bf
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.aarlo_ding_front_doorbell
       from: "off"
       to: "on"
-  action:
-    - service: notify.google_assistant_sdk
+  actions:
+    - action: notify.google_assistant_sdk
       data:
         message: Someone is at the front door
 
 - alias: Announce Front Door Open
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.front_door
       from: "off"
       to: "on"
       for: "00:00:01"
-  action:
-    - service: notify.google_assistant_sdk
+  actions:
+    - action: notify.google_assistant_sdk
       data:
         message: Front door is open
   mode: single
 
 - alias: Announce Garage Door Open
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.garage_door
       from: "off"
       to: "on"
       for: "00:00:01"
-  action:
-    - service: notify.google_assistant_sdk
+  actions:
+    - action: notify.google_assistant_sdk
       data:
         message: Garage door is open
   mode: single
 
 - alias: Announce Garage Hallway Door Open
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.garage_hallway_door_opening
       from: "off"
       to: "on"
       for: "00:00:01"
-  action:
-    - service: notify.google_assistant_sdk
+  actions:
+    - action: notify.google_assistant_sdk
       data:
         message: Garage hallway door is open
   mode: single
 
 - alias: Announce Bedroom Door Open
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.bedroom_door
       from: "off"
       to: "on"
       for: "00:00:01"
-  action:
-    - service: notify.google_assistant_sdk
+  actions:
+    - action: notify.google_assistant_sdk
       data:
         message: Bedroom door is open
   mode: single
 
 - alias: Announce Launry Room Door Open
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.laundry_room_door
       from: "off"
       to: "on"
       for: "00:00:01"
-  action:
-    - service: notify.google_assistant_sdk
+  actions:
+    - action: notify.google_assistant_sdk
       data:
         message: Laundry room door is open
   mode: single
 
 - alias: Door Alarm When Away
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.front_door
       to: "on"
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.laundry_room_door
       to: "on"
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.office_door
       to: "on"
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.garage_door
   condition:
     condition: state
     entity_id: input_select.house_state
     state: "away"
-  action:
-    - service: aarlo.sirens_on
+  actions:
+    - action: aarlo.sirens_on
       data:
         volume: 10
         duration: 300
-    - service: alarm_control_panel.alarm_trigger
+    - action: alarm_control_panel.alarm_triggers
       entity_id: alarm_control_panel.aarlo_annacar_arlo
-    - service: notify.all_personal_devices
+    - action: notify.all_personal_devices
       data:
         message: "Someone Is Breaking In!"
   mode: single
@@ -111,77 +110,77 @@
 # Door Notifications
 #################################################
 - alias: Notify Someone Is At The Front Door
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.aarlo_ding_front_doorbell
       from: "off"
       to: "on"
-  action:
-    - service: notify.all_personal_devices
+  actions:
+    - action: notify.all_personal_devices
       data:
         message: "Someone is at the front door!"
 
 - alias: Notify Front Door Open
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.front_door
       from: "off"
       to: "on"
       for: "00:00:01"
-  action:
-    - service: notify.all_personal_devices
+  actions:
+    - action: notify.all_personal_devices
       data:
         message: "Front door is open!"
   mode: single
 
 - alias: Notify Garage Door Open
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.garage_door
       from: "off"
       to: "on"
       for: "00:00:01"
-  action:
-    - service: notify.all_personal_devices
+  actions:
+    - action: notify.all_personal_devices
       data:
         message: "Garage door is open!"
   mode: single
 
 - alias: Notify Garage Hallway Door Open
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.garage_hallway_door_opening
       from: "off"
       to: "on"
       for: "00:00:01"
-  action:
-    - service: notify.all_personal_devices
+  actions:
+    - action: notify.all_personal_devices
       data:
         message: "Garage door is open!"
   mode: single
 
 - alias: Notify Bedroom Door Open
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.bedroom_door
       from: "off"
       to: "on"
       for: "00:00:01"
-  action:
-    - service: notify.all_personal_devices
+  actions:
+    - action: notify.all_personal_devices
       data:
         message: "Bedroom door is open!"
   mode: single
 
 - alias: Notify Launry Room Door Open
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.laundry_room_door
       from: "off"
       to: "on"
       for: "00:00:01"
-  action:
-    - service: notify.all_personal_devices
+  actions:
+    - action: notify.all_personal_devices
       data:
         message: "Laundry room door is open!"
   mode: single

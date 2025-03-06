@@ -2,13 +2,13 @@
 # Motion
 #################################################
 - alias: Back Driveway Motion
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.aarlo_motion_back_driveway
       from: "off"
       to: "on"
-  action:
-    - service: switch.turn_on
+  actions:
+    - action: switch.turn_on
       entity_id: switch.back_driveway_floodlight
   condition:
     alias: "Sun down"
@@ -17,11 +17,11 @@
     state: "below_horizon"
 
 - alias: Back Driveway Idle
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.aarlo_motion_back_driveway
       to: "off"
       for: "00:10:00"
-  action:
-    - service: switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id: switch.back_driveway_floodlight

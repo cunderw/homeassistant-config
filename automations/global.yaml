@@ -2,154 +2,141 @@
 # General
 #################################################
 - alias: "Sun Rise"
-  trigger:
-    platform: sun
+  triggers:
+    trigger: sun
     event: sunrise
     offset: "+00:00:00"
-  action:
-    - service: switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id: switch.front_porch
-    - service: switch.turn_off
+    - action: switch.turn_off
       entity_id: switch.front_driveway_lights
-    - service: switch.turn_off
-      entity_id: switch.front_porch_strips_power_switch 
+    - action: switch.turn_off
+      entity_id: switch.front_porch_strips_power_switch
 
 - alias: "Sun Set"
-  trigger:
-    platform: sun
+  triggers:
+    trigger: sun
     event: sunset
     offset: "+00:00:00"
-  action:
-    - service: switch.turn_on
+  actions:
+    - action: switch.turn_on
       entity_id: switch.front_porch
-    - service: switch.turn_on
+    - action: switch.turn_on
       entity_id: switch.front_driveway_lights
-    - service: switch.turn_on
-      entity_id: switch.front_porch_strips_power_switch 
+    - action: switch.turn_on
+      entity_id: switch.front_porch_strips_power_switch
 
 #################################################
 # Location & Alarms
 #################################################
 - alias: Arm Away
-  trigger:
-    platform: state
+  triggers:
+    trigger: state
     entity_id: group.family_tracker
     from: "home"
     to: "not_home"
     for:
       seconds: 60
   condition: []
-  action:
-    - service: alarm_control_panel.alarm_arm_away
+  actions:
+    - action: alarm_control_panel.alarm_arm_away
       entity_id: alarm_control_panel.aarlo_annacar_arlo
-    - service: notify.all_personal_devices
+    - action: notify.all_personal_devices
       data:
         message: Everyone has left. Activating Away Mode.
-    - service: scene.turn_on
+    - action: scene.turn_on
       entity_id: scene.away
   mode: single
 
 - alias: Arm Home
-  trigger:
-    platform: state
+  triggers:
+    trigger: state
     entity_id: group.family_tracker
     from: "not_home"
     to: "home"
     for:
       seconds: 10
   condition: []
-  action:
-    - service: alarm_control_panel.alarm_arm_home
+  actions:
+    - action: alarm_control_panel.alarm_arm_home
       entity_id: alarm_control_panel.aarlo_annacar_arlo
-    - service: notify.all_personal_devices
+    - action: notify.all_personal_devices
       data:
         message: Arriving Home
-    - service: scene.turn_on
+    - action: scene.turn_on
       entity_id: scene.arriving_home
   mode: single
 
 # - alias: Carson Driving Home
-#   trigger:
-#     platform: state
+#   triggers:
+#     trigger: state
 #     entity_id: device_tracker.carson_phone
 #     from: "not_home"
 #     to: "home"
 #   condition: "{{ is_state('input_select.carson_status', 'carson_driving') }}"
-#   action:
-#     - service: cover.open_cover
+#   actions:
+#     - action: cover.open_cover
 #       entity_id: cover.garage_bay_2
-#     - service: input_select.select_option
+#     - action: input_select.select_option
 #       data:
 #         option: carson_home
 #       target:
 #         entity_id: input_select.carson_status
 
 # - alias: Anna Driving Home
-#   trigger:
-#     platform: state
+#   triggers:
+#     trigger: state
 #     entity_id: device_tracker.anna_phone
 #     from: "not_home"
 #     to: "home"
 #   condition: "{{ is_state('input_select.anna_status', 'anna_driving') }}"
-#   action:
-#     - service: cover.open_cover
+#   actions:
+#     - action: cover.open_cover
 #       entity_id: cover.garage_bay_1
-#     - service: input_select.select_option
+#     - action: input_select.select_option
 #       data:
 #         option: anna_home
 #       target:
 #         entity_id: input_select.anna_status
 
 #################################################
-#  Device Alerts
-#################################################
-- alias: Low Battery Level
-  use_blueprint:
-    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
-    input:
-      actions:
-        - service: notify.mobile_app_carson_iphone
-          data:
-            message: "{{sensors}} have low battery!"
-      threshold: 10
-
-#################################################
 #  Tags
 #################################################
 - alias: Front Door Is Tagged
-  trigger:
-    - platform: tag
+  triggers:
+    - trigger: tag
       tag_id: f849630c-64f4-4f6a-ba15-9e4fb22c411a
   condition: []
-  action:
+  actions:
     - choose:
         - conditions:
             - condition: state
               entity_id: lock.front_door_lock
               state: locked
           sequence:
-            - service: lock.unlock
+            - action: lock.unlock
               entity_id: lock.front_door_lock
         - conditions:
             - condition: state
               entity_id: lock.front_door_lock
               state: unlocked
           sequence:
-            - service: lock.lock
+            - action: lock.lock
               entity_id: lock.front_door_lock
   mode: single
 
 #################################################
-# House State 
+# House State
 #################################################
 - alias: Lock Doors
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: input_select.house_state
       to: "away"
-    - platform: state
+    - trigger: state
       entity_id: input_select.house_state
       to: "night"
   condition: []
-  action:
-    - service: script.lock_doors
+  actions:
+    - action: script.lock_doors
