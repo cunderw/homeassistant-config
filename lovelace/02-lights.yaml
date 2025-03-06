@@ -1,104 +1,99 @@
 title: Lights
 icon: mdi:lightbulb-cfl
 cards:
-  - type: custom:layout-card
-    layout_type: custom:masonry-layout
-    layout:
-      max_cols: 2
-    cards:
-      - type: custom:auto-entities
-        card:
-          type: entities
-          title: Living Room
-        card_param: entities
-        filter:
-          include:
-            - domain: light
-              area: Living Room
-              options:
-                type: custom:mushroom-light-card
-                show_brightness_control: true
-                use_light_color: true
-                show_color_control: true
-        sort:
-          method: friendly_name
-      - type: custom:auto-entities
-        card:
-          type: entities
-          title: Kitchen
-        card_param: entities
-        filter:
-          include:
-            - domain: light
-              area: Kitchen
-              options:
-                type: custom:mushroom-light-card
-                show_brightness_control: true
-                use_light_color: true
-                show_color_control: true
-        sort:
-          method: friendly_name
-      - type: custom:auto-entities
-        card:
-          type: entities
-          title: Dining Room
-        card_param: entities
-        filter:
-          include:
-            - domain: light
-              area: Dining Room
-              options:
-                type: custom:mushroom-light-card
-                show_brightness_control: true
-                use_light_color: true
-                show_color_control: true
-        sort:
-          method: friendly_name
-      - type: custom:auto-entities
-        card:
-          type: entities
-          title: Bedroom
-        card_param: entities
-        filter:
-          include:
-            - domain: light
-              area: Bedroom
-              options:
-                type: custom:mushroom-light-card
-                show_brightness_control: true
-                use_light_color: true
-                show_color_control: true
-        sort:
-          method: friendly_name
-      - type: custom:auto-entities
-        card:
-          type: entities
-          title: Office
-        card_param: entities
-        filter:
-          include:
-            - domain: light
-              area: Office
-              options:
-                type: custom:mushroom-light-card
-                show_brightness_control: true
-                use_light_color: true
-                show_color_control: true
-        sort:
-          method: friendly_name
-      - type: custom:auto-entities
-        card:
-          type: entities
-          title: Breezeway
-        card_param: entities
-        filter:
-          include:
-            - domain: light
-              area: Breezeway
-              options:
-                type: custom:mushroom-light-card
-                show_brightness_control: true
-                use_light_color: true
-                show_color_control: true
-        sort:
-          method: friendly_name
+  - type: custom:auto-entities
+    card:
+      type: entities
+      title: Living Room
+    card_param: entities
+    filter:
+      include:
+        - domain: light
+          area: Living Room
+          options:
+            type: custom:mushroom-light-card
+            show_brightness_control: true
+            use_light_color: true
+            show_color_control: true
+    sort:
+      method: friendly_name
+  - type: custom:auto-entities
+    card:
+      type: entities
+      title: Kitchen
+    card_param: entities
+    filter:
+      include:
+        - domain: light
+          area: Kitchen
+          options:
+            type: custom:mushroom-light-card
+            show_brightness_control: true
+            use_light_color: true
+            show_color_control: true
+    sort:
+      method: friendly_name
+  - type: custom:auto-entities
+    card:
+      type: entities
+      title: Dining Room
+    card_param: entities
+    filter:
+      include:
+        - domain: light
+          area: Dining Room
+          options:
+            type: custom:mushroom-light-card
+            show_brightness_control: true
+            use_light_color: true
+            show_color_control: true
+    sort:
+      method: friendly_name
+  - type: custom:auto-entities
+    card:
+      type: entities
+      title: Bedroom
+    card_param: entities
+    filter:
+      include:
+        - domain: light
+          area: Bedroom
+          options:
+            type: custom:mushroom-light-card
+            show_brightness_control: true
+            use_light_color: true
+            show_color_control: true
+    sort:
+      method: friendly_name
+  - type: custom:auto-entities
+    card:
+      type: entities
+      title: Office
+    card_param: entities
+    filter:
+      include:
+        - domain: light
+          area: Office
+          options:
+            type: custom:mushroom-light-card
+            show_brightness_control: true
+            use_light_color: true
+            show_color_control: true
+    sort:
+      method: friendly_name
+  - type: custom:auto-entities
+    card:
+      type: entities
+      title: Breezeway
+    card_param: entities
+    filter:
+      include:
+        - domain: light
+          area: Breezeway
+          options:
+            type: custom:mushroom-light-card
+            show_brightness_control: true
+            use_light_color: true
+            show_color_control: true
+    sort:
+      method: friendly_name

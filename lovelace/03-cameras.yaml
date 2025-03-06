@@ -1,29 +1,60 @@
 title: Cameras
 icon: mdi:camera
 cards:
-  - type: custom:auto-entities
-    card:
-      type: custom:layout-card
-      layout_type: custom:masonry-layout
-    card_param: cards
-    filter:
-      include:
-        - domain: camera
-          entity_id: /aarlo/
-          options:
-            type: custom:aarlo-glance
-            image_click: play
-            show:
-              - motion
-              - sound
-              - snapshot
-              - battery_level
-              - signal_strength
-            top_date: true
-        - domain: camera
-          not:
-            entity_id: /aarlo|carson|mail|person/
-          options:
-            type: picture-entity
-    sort:
-      method: friendly_name
+  - type: custom:aarlo-glance
+    entity: camera.aarlo_front_doorbell
+    name: Front Door
+    door: binary_sensor.front_door
+    door_lock: lock.front_door_lock
+    image_click: play
+    show:
+      - motion
+      - sound
+      - snapshot
+      - battery_level
+      - signal_strength
+    top_date: true
+  - type: custom:aarlo-glance
+    entity: camera.aarlo_breezeway
+    name: Breezeway
+    door: binary_sensor.laundry_room_door
+    door_lock: lock.laundry_room_door_lock
+    image_click: play
+    show:
+      - motion
+      - sound
+      - snapshot
+      - battery_level
+      - signal_strength
+    top_date: true
+  - type: custom:aarlo-glance
+    entity: camera.aarlo_back_driveway
+    name: Backyard
+    door: binary_sensor.garage_door
+    image_click: play
+    show:
+      - motion
+      - sound
+      - snapshot
+      - battery_level
+      - signal_strength
+    top_date: true
+  - type: custom:aarlo-glance
+    entity: camera.aarlo_east_front_yard
+    name: East Yard
+    image_click: play
+    show:
+      - motion
+      - sound
+      - snapshot
+      - battery_level
+      - signal_strength
+    top_date: true
+  - type: picture-entity
+    entity: camera.dining_room_camera
+  - type: picture-entity
+    entity: camera.living_room_camera
+  - type: picture-entity
+    entity: camera.bedroom_camera
+  - type: picture-entity
+    entity: camera.office_camera

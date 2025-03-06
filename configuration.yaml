@@ -56,7 +56,7 @@ recorder:
 zha:
   zigpy_config:
     source_routing: true
-    
+
 stream:
 
 #################################################
@@ -95,8 +95,6 @@ lovelace:
       url: /local/community/lovelace-auto-entities/auto-entities.js
     - type: module
       url: /local/community/lovelace-hass-aarlo/hass-aarlo.js
-    - type: module
-      url: /local/community/lovelace-layout-card/layout-card.js
     - type: module
       url: /local/community/lovelace-mushroom/mushroom.js
     - type: module
