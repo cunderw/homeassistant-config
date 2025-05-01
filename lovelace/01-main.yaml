@@ -50,6 +50,7 @@ cards:
                 type: custom:mushroom-entity-card
           exclude:
             - device: /Lock/
+            - entity_id: /aarlo/
       # Locks and Garage
       - type: custom:auto-entities
         card:

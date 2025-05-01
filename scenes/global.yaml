@@ -79,13 +79,20 @@
       state: "off"
     light.breezeway_lights:
       state: "off"
-    light.downstairs_lights:
+    light.living_room_lights:
       state: "off"
-    light.iris:
-      state: "on"
-      brightness: 130
-      color_mode: "xy"
-      rgb_color: [255, 43, 49]
+    light.dining_room_lights:
+      state: "off"
+    light.laundry_room_lights:
+      state: "off"
+    light.kitchen_bar:
+      state: "off"
+    light.kitchen_ceiling:
+      state: "off"
+    light.kitchen_island:
+      state: "off"
+    light.kitchen_hallway:
+      state: "off"
     light.kitchen_sink:
       state: "on"
       brightness: "130"

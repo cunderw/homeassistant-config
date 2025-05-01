@@ -32,7 +32,7 @@
         device_id: 38823d2ac8278565d4e1a71abe5eb7b1
   actions:
     - variables:
-        command: "{{ triggers.event.data.command }}"
+        command: "{{ trigger.event.data.command }}"
     - choose:
         - conditions:
             - "{{ command == 'on_short_release' }}"
