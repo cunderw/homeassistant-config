@@ -18,8 +18,6 @@
     light.living_room_lights:
       state: "on"
       brightness: 10
-    light.nursery_lights:
-      state: "off"
     light.office_lights:
       state: "off"
 
@@ -58,13 +56,9 @@
         - 255
         - 255
         - 255
-    light.nursery_lights:
-      state: "on"
 
 - name: Sleep
   entities:
-    fan.breezeway_ceiling_fan:
-      state: "off"
     input_select.house_state: night
     light.bedroom_bathroom_vanity:
       state: "off"
@@ -77,24 +71,14 @@
       state: "off"
     light.bedroom_floor_lamp:
       state: "off"
-    light.breezeway_lights:
-      state: "off"
     light.living_room_lights:
       state: "off"
     light.dining_room_lights:
       state: "off"
     light.laundry_room_lights:
       state: "off"
-    light.kitchen_bar:
-      state: "off"
     light.kitchen_ceiling:
-      state: "off"
-    light.kitchen_island:
-      state: "off"
-    light.kitchen_hallway:
       state: "off"
     light.kitchen_sink:
       state: "on"
       brightness: "130"
-    light.nursery_lights:
-      state: "off"

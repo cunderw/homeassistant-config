@@ -6,12 +6,8 @@ lock_doors:
   sequence:
     - action: lock.lock
       entity_id: lock.laundry_room_door_lock
-    - action: lock.lock
-      entity_id: lock.front_door_lock
 unlock_doors:
   alias: Unlock Doors
   sequence:
     - action: lock.unlock
       entity_id: lock.laundry_room_door_lock
-    - action: lock.unlock
-      entity_id: lock.front_door_lock

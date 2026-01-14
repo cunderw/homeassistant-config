@@ -9,10 +9,6 @@
   actions:
     - action: switch.turn_off
       entity_id: switch.front_porch
-    - action: switch.turn_off
-      entity_id: switch.front_driveway_lights
-    - action: switch.turn_off
-      entity_id: switch.front_porch_strips_power_switch
 
 - alias: "Sun Set"
   triggers:
@@ -22,10 +18,6 @@
   actions:
     - action: switch.turn_on
       entity_id: switch.front_porch
-    - action: switch.turn_on
-      entity_id: switch.front_driveway_lights
-    - action: switch.turn_on
-      entity_id: switch.front_porch_strips_power_switch
 
 #################################################
 # Location & Alarms
@@ -99,32 +91,6 @@
 #         option: anna_home
 #       target:
 #         entity_id: input_select.anna_status
-
-#################################################
-#  Tags
-#################################################
-- alias: Front Door Is Tagged
-  triggers:
-    - trigger: tag
-      tag_id: f849630c-64f4-4f6a-ba15-9e4fb22c411a
-  condition: []
-  actions:
-    - choose:
-        - conditions:
-            - condition: state
-              entity_id: lock.front_door_lock
-              state: locked
-          sequence:
-            - action: lock.unlock
-              entity_id: lock.front_door_lock
-        - conditions:
-            - condition: state
-              entity_id: lock.front_door_lock
-              state: unlocked
-          sequence:
-            - action: lock.lock
-              entity_id: lock.front_door_lock
-  mode: single
 
 #################################################
 # House State

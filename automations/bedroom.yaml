@@ -24,35 +24,35 @@
 #################################################
 # Control
 #################################################
-- alias: Bedroom Controller
-  triggers:
-    - trigger: event
-      event_type: zha_event
-      event_data:
-        device_id: 38823d2ac8278565d4e1a71abe5eb7b1
-  actions:
-    - variables:
-        command: "{{ trigger.event.data.command }}"
-    - choose:
-        - conditions:
-            - "{{ command == 'on_short_release' }}"
-          sequence:
-            - action: light.toggle
-              entity_id: light.bedroom_ceiling
-        - conditions:
-            - "{{ command == 'up_short_release' }}"
-          sequence:
-            - action: light.toggle
-              entity_id: light.bedroom_bedside_lamps
-        - conditions:
-            - "{{ command == 'down_short_release' }}"
-          sequence:
-            - action: switch.toggle
-              entity_id: switch.bedroom_floor_lamp
-        - conditions:
-            - "{{ command == 'off_short_release' }}"
-          sequence:
-            - action: light.toggle
-              entity_id: light.nursery_lights
-  mode: queued
-  max_exceeded: silent
+# - alias: Bedroom Controller
+#   triggers:
+#     - trigger: event
+#       event_type: zha_event
+#       event_data:
+#         device_id: 38823d2ac8278565d4e1a71abe5eb7b1
+#   actions:
+#     - variables:
+#         command: "{{ trigger.event.data.command }}"
+#     - choose:
+#         - conditions:
+#             - "{{ command == 'on_short_release' }}"
+#           sequence:
+#             - action: light.toggle
+#               entity_id: light.bedroom_ceiling
+#         - conditions:
+#             - "{{ command == 'up_short_release' }}"
+#           sequence:
+#             - action: light.toggle
+#               entity_id: light.bedroom_bedside_lamps
+#         - conditions:
+#             - "{{ command == 'down_short_release' }}"
+#           sequence:
+#             - action: switch.toggle
+#               entity_id: switch.bedroom_floor_lamp
+#         - conditions:
+#             - "{{ command == 'off_short_release' }}"
+#           sequence:
+#             - action: light.toggle
+#               entity_id: light.nursery_lights
+#   mode: queued
+#   max_exceeded: silent

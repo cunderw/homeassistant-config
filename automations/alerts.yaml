@@ -25,71 +25,25 @@
         message: Front door is open
   mode: single
 
-- alias: Announce Garage Door Open
-  triggers:
-    - trigger: state
-      entity_id: binary_sensor.garage_door
-      from: "off"
-      to: "on"
-      for: "00:00:01"
-  actions:
-    - action: notify.google_assistant_sdk
-      data:
-        message: Garage door is open
-  mode: single
+# - alias: Announce Garage Door Open
+#   triggers:
+#     - trigger: state
+#       entity_id: binary_sensor.garage_door
+#       from: "off"
+#       to: "on"
+#       for: "00:00:01"
+#   actions:
+#     - action: notify.google_assistant_sdk
+#       data:
+#         message: Garage door is open
+#   mode: single
 
-- alias: Announce Garage Hallway Door Open
-  triggers:
-    - trigger: state
-      entity_id: binary_sensor.garage_hallway_door_opening
-      from: "off"
-      to: "on"
-      for: "00:00:01"
-  actions:
-    - action: notify.google_assistant_sdk
-      data:
-        message: Garage hallway door is open
-  mode: single
-
-- alias: Announce Bedroom Door Open
-  triggers:
-    - trigger: state
-      entity_id: binary_sensor.bedroom_door
-      from: "off"
-      to: "on"
-      for: "00:00:01"
-  actions:
-    - action: notify.google_assistant_sdk
-      data:
-        message: Bedroom door is open
-  mode: single
-
-- alias: Announce Launry Room Door Open
-  triggers:
-    - trigger: state
-      entity_id: binary_sensor.laundry_room_door
-      from: "off"
-      to: "on"
-      for: "00:00:01"
-  actions:
-    - action: notify.google_assistant_sdk
-      data:
-        message: Laundry room door is open
-  mode: single
 
 - alias: Door Alarm When Away
   triggers:
     - trigger: state
       entity_id: binary_sensor.front_door
       to: "on"
-    - trigger: state
-      entity_id: binary_sensor.laundry_room_door
-      to: "on"
-    - trigger: state
-      entity_id: binary_sensor.office_door
-      to: "on"
-    - trigger: state
-      entity_id: binary_sensor.garage_door
   condition:
     condition: state
     entity_id: input_select.house_state
@@ -131,56 +85,4 @@
     - action: notify.all_personal_devices
       data:
         message: "Front door is open!"
-  mode: single
-
-- alias: Notify Garage Door Open
-  triggers:
-    - trigger: state
-      entity_id: binary_sensor.garage_door
-      from: "off"
-      to: "on"
-      for: "00:00:01"
-  actions:
-    - action: notify.all_personal_devices
-      data:
-        message: "Garage door is open!"
-  mode: single
-
-- alias: Notify Garage Hallway Door Open
-  triggers:
-    - trigger: state
-      entity_id: binary_sensor.garage_hallway_door_opening
-      from: "off"
-      to: "on"
-      for: "00:00:01"
-  actions:
-    - action: notify.all_personal_devices
-      data:
-        message: "Garage door is open!"
-  mode: single
-
-- alias: Notify Bedroom Door Open
-  triggers:
-    - trigger: state
-      entity_id: binary_sensor.bedroom_door
-      from: "off"
-      to: "on"
-      for: "00:00:01"
-  actions:
-    - action: notify.all_personal_devices
-      data:
-        message: "Bedroom door is open!"
-  mode: single
-
-- alias: Notify Launry Room Door Open
-  triggers:
-    - trigger: state
-      entity_id: binary_sensor.laundry_room_door
-      from: "off"
-      to: "on"
-      for: "00:00:01"
-  actions:
-    - action: notify.all_personal_devices
-      data:
-        message: "Laundry room door is open!"
   mode: single

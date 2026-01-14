@@ -5,7 +5,6 @@ cards:
     entity: camera.aarlo_front_doorbell
     name: Front Door
     door: binary_sensor.front_door
-    door_lock: lock.front_door_lock
     image_click: play
     show:
       - motion
