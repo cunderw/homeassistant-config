@@ -5,9 +5,9 @@ lock_doors:
   alias: Lock Doors
   sequence:
     - action: lock.lock
-      entity_id: lock.laundry_room_door_lock
+      entity_id: lock.front_door
 unlock_doors:
   alias: Unlock Doors
   sequence:
     - action: lock.unlock
-      entity_id: lock.laundry_room_door_lock
+      entity_id: lock.front_door

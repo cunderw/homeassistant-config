@@ -106,3 +106,14 @@
   condition: []
   actions:
     - action: script.lock_doors
+
+- alias: Bed Time 
+  triggers:
+    - trigger: state
+      entity_id: input_select.house_state
+      to: "night"
+  condition: []
+  actions:
+    - action: google_assistant_sdk.send_text_command
+      data:
+        command: "play white noise on the atticus bedroom speaker"

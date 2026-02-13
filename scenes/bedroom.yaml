@@ -13,3 +13,5 @@
       state: "off"
     light.bedroom_dresser_lamp:
       state: "off"
+    input_select.house_state:
+      state: "night"

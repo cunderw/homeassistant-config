@@ -56,6 +56,14 @@
         - 255
         - 255
         - 255
+    light.dining_room_lights:
+      state: "on"
+      brightness: 255
+      rgb_color:
+        - 255
+        - 255
+        - 255
+    
 
 - name: Sleep
   entities:

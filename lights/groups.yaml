@@ -14,6 +14,13 @@
     - light.dining_room_floor_lamp_2
 
 - platform: group
+  name: Playroom Lights
+  unique_id: "99990257-dae1-4236-85a7-4b03416bed74"
+  entities:
+    - light.playroom_ceiling_fan_light
+    - light.playroom_ceiling_lights
+
+- platform: group
   name: Living Room TV
   unique_id: "a599729c-0f76-44ab-9da1-07c76bc0fd5e"
   entities:
@@ -22,17 +29,33 @@
     - light.living_room_light_bar_1
     - light.living_room_light_bar_2
 
+
+- platform: group
+  name: Living Room Bar Lights
+  unique_id: "5c4dd88d-efb3-422a-871a-8016e766f944"
+  entities:
+    - light.bar_ceiling_lights
+    - light.wet_bar_ceiling_lights
+    - light.patio_door_light
+
 - platform: group
   name: Living Room Lights
   unique_id: "3a2917fb-4dc5-4629-a717-c4e447d8a206"
   entities:
     - light.living_room_tv
+    - light.living_room_ceiling_stair_lights
+    - light.living_room_stair_lights
+    - light.living_room_couch_lights
+    - light.living_room_side_lights
+    - light.living_room_bar_lights
+    - light.patio_door_light
 
 - platform: group
   name: Downstairs Lights
   unique_id: "bb4a9027-8aec-49b7-975f-e80ba4aab17a"
   entities:
     - light.living_room_lights
+    - light.playroom_lights
 
 - platform: group
   name: Office Lights
@@ -40,3 +63,11 @@
   entities:
     - light.office_lamp
     - light.iris
+    - light.office_ceiling
+
+- platform: group
+  name: Basement Lights
+  unique_id: "82fd9ada-a583-4111-a6ea-6d772b9e5f0e"
+  entities:
+    - light.media_room_ceiling
+    - light.laundry_room_ceiling

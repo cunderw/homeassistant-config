@@ -12,18 +12,18 @@
       data:
         message: Someone is at the front door
 
-- alias: Announce Front Door Open
-  triggers:
-    - trigger: state
-      entity_id: binary_sensor.front_door
-      from: "off"
-      to: "on"
-      for: "00:00:01"
-  actions:
-    - action: notify.google_assistant_sdk
-      data:
-        message: Front door is open
-  mode: single
+# - alias: Announce Front Door Open
+#   triggers:
+#     - trigger: state
+#       entity_id: binary_sensor.front_door
+#       from: "off"
+#       to: "on"
+#       for: "00:00:01"
+#   actions:
+#     - action: notify.google_assistant_sdk
+#       data:
+#         message: Front door is open
+#   mode: single
 
 # - alias: Announce Garage Door Open
 #   triggers:

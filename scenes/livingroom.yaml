@@ -22,7 +22,26 @@
   entities:
     light.living_room_tv:
       state: "on"
-      brightness: 255
+      brightness: 51
+      rgb_color:
+        - 255
+        - 131
+        - 118
+    light.living_room_bar_lights:
+      state: "off"
+    light.living_room_stair_lights:
+      state: "off"
+    light.living_room_ceiling_stair_lights:
+      state: "off"
+    light.living_room_couch_lights:
+      state: "off"
+    light.patio_door_light:
+      state: "off"
+    light.playroom_lights:
+      state: "off"
+    light.dining_room_lights:
+      state: "on"
+      brightness: 51
       rgb_color:
         - 255
         - 131
