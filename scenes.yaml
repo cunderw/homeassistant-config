@@ -1,0 +1,192 @@
+- id: "5d80e46b-7d85-403b-b047-94526d3fa075"
+  name: Away
+  entities:
+    input_select.house_state: away
+    light.bedroom_bathroom_vanity_lights:
+      state: "off"
+    light.bedroom_lights:
+      state: "off"
+    light.kitchen_lights:
+      state: "on"
+      brightness: 10
+    light.dining_room_lights:
+      state: "off"
+    light.front_door_lights:
+      state: "on"
+      brightness: 30
+    light.laundry_room_lights:
+      state: "off"
+    light.living_room_lights:
+      state: "on"
+      brightness: 10
+    light.office_lights:
+      state: "off"
+
+- id: "a31c1ad0-56c6-45d0-a3d2-b56e41b4126a"
+  name: Arriving Home
+  entities:
+    input_select.house_state: home
+    light.dining_room_lights:
+      state: "on"
+      brightness: 255
+    light.front_door_lights:
+      state: "on"
+      brightness: 255
+    light.kitchen_lights:
+      state: "on"
+      brightness: 255
+    light.laundry_room_lights:
+      state: "on"
+    light.living_room_lights:
+      state: "on"
+      brightness: 255
+
+- id: "74539562-92aa-4f9f-9e5c-608ca5360c7a"
+  name: Morning
+  entities:
+    input_select.house_state: home
+    light.bedroom_lights:
+      state: "on"
+      brightness: 255
+      rgb_color:
+        - 255
+        - 255
+        - 255
+    light.downstairs_lights:
+      state: "on"
+      brightness: 255
+      rgb_color:
+        - 255
+        - 255
+        - 255
+    light.dining_room_lights:
+      state: "on"
+      brightness: 255
+      rgb_color:
+        - 255
+        - 255
+        - 255
+
+- id: "291b266f-8526-4494-ae92-aa70d253f126"
+  name: Sleep
+  entities:
+    input_select.house_state: night
+    light.bedroom_bathroom_vanity:
+      state: "off"
+    light.bedroom_bedside_lamps:
+      state: "on"
+      brightness: 5
+      color_mode: "xy"
+      xy_color: [0.697993, 0.299992]
+    light.bedroom_ceiling:
+      state: "off"
+    light.bedroom_floor_lamp:
+      state: "off"
+    light.living_room_lights:
+      state: "off"
+    light.dining_room_lights:
+      state: "off"
+    light.laundry_room_lights:
+      state: "off"
+    light.kitchen_ceiling:
+      state: "off"
+    light.kitchen_sink:
+      state: "on"
+      brightness: "130"
+
+- id: "64f8741d-92b3-485c-9f50-ac9b9abadfbd"
+  name: Bedtime
+  entities:
+    light.bedroom_bathroom_lights:
+      state: "off"
+    light.bedroom_bedside_lamps:
+      state: "on"
+      brightness: 5
+      color_mode: "xy"
+      xy_color: [0.697993, 0.299992]
+    light.bedroom_ceiling_lights:
+      state: "off"
+    light.bedroom_floor_lamp:
+      state: "off"
+    light.bedroom_dresser_lamp:
+      state: "off"
+    input_select.house_state:
+      state: "night"
+
+- id: "3ad73c27-758e-42d3-84d0-3f3ebd70c04d"
+  name: Movie Time
+  entities:
+    light.living_room_tv:
+      state: "on"
+      brightness: 100
+      rgb_color:
+        - 255
+        - 131
+        - 118
+
+- id: "36c6cf4f-9461-4577-8d4b-29a23437db49"
+  name: Movie Time Paused
+  entities:
+    light.living_room_tv:
+      state: "on"
+      brightness: 255
+      rgb_color:
+        - 255
+        - 131
+        - 118
+
+- id: "5fc13678-1e69-40e3-8e9a-130868c3f529"
+  name: Evening
+  entities:
+    light.living_room_tv:
+      state: "on"
+      brightness: 51
+      rgb_color:
+        - 255
+        - 43
+        - 82
+    light.living_room_bar_lights:
+      state: "off"
+    light.living_room_stair_lights:
+      state: "off"
+    light.living_room_ceiling_stair_lights:
+      state: "off"
+    light.living_room_couch_lights:
+      state: "off"
+    light.living_room_side_lights:
+      state: "off"
+    light.patio_door_light:
+      state: "off"
+    light.playroom_lights:
+      state: "off"
+    light.dining_room_ceiling:
+      state: "off"
+    light.upstairs_hallway:
+      state: "off"
+    light.dining_room_floor_lamp_1:
+      state: "on"
+      brightness: 51
+      rgb_color:
+        - 255
+        - 3
+        - 85
+    light.dining_room_floor_lamp_2:
+      state: "on"
+      brightness: 51
+      rgb_color:
+        - 255
+        - 3
+        - 85
+
+- id: "2744873b-a54e-47d4-aa1e-51a058b7d6e3"
+  name: Office Active Day
+  entities:
+    light.office_lights:
+      state: "on"
+      brightness: 255
+
+- id: "78cec89c-bc25-4500-b534-52624e06760f"
+  name: Office Inactive
+  entities:
+    light.office_lights:
+      state: "off"

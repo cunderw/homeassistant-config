@@ -1,0 +1,229 @@
+- id: 45512fdc-7b3a-4c44-931c-0afde7ba23f8
+  alias: "Sun Rise"
+  triggers:
+    trigger: sun
+    event: sunrise
+    offset: "+00:00:00"
+  actions:
+    - action: switch.turn_off
+      entity_id: switch.front_porch
+
+- id: bd9b409a-bde8-449d-9a3a-bedf3c250fd3
+  alias: "Sun Set"
+  triggers:
+    trigger: sun
+    event: sunset
+    offset: "+00:00:00"
+  actions:
+    - action: switch.turn_on
+      entity_id: switch.front_porch
+
+- id: c63158aa-26ca-48db-a08d-e7384537d4e7
+  alias: Arm Away
+  triggers:
+    trigger: state
+    entity_id: group.family_tracker
+    from: "home"
+    to: "not_home"
+    for:
+      seconds: 60
+  condition: []
+  actions:
+    - action: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.aarlo_annacar_arlo
+    - action: notify.all_personal_devices
+      data:
+        message: Everyone has left. Activating Away Mode.
+    - action: scene.turn_on
+      entity_id: scene.away
+  mode: single
+
+- id: 725a9747-22d0-4efd-84e1-37bda566171e
+  alias: Arm Home
+  triggers:
+    trigger: state
+    entity_id: group.family_tracker
+    from: "not_home"
+    to: "home"
+    for:
+      seconds: 10
+  condition: []
+  actions:
+    - action: alarm_control_panel.alarm_arm_home
+      entity_id: alarm_control_panel.aarlo_annacar_arlo
+    - action: notify.all_personal_devices
+      data:
+        message: Arriving Home
+    - action: scene.turn_on
+      entity_id: scene.arriving_home
+  mode: single
+
+- id: 8ce1f043-b003-480c-a8c8-3c6406f3f444
+  alias: Lock Doors
+  triggers:
+    - trigger: state
+      entity_id: input_select.house_state
+      to: "away"
+    - trigger: state
+      entity_id: input_select.house_state
+      to: "night"
+  condition: []
+  actions:
+    - action: script.lock_doors
+
+- id: dd007a77-858d-471d-ad4c-14f050f8c61d
+  alias: Bed Time
+  triggers:
+    - trigger: state
+      entity_id: input_select.house_state
+      to: "night"
+  condition: []
+  actions:
+    - action: google_assistant_sdk.send_text_command
+      data:
+        command: "play white noise on the atticus bedroom speaker"
+
+- id: 71e32aa0-fd43-4526-90a1-ce259b8715b5
+  alias: Office Carson Mac Screen On
+  triggers:
+    - trigger: state
+      entity_id: sensor.carson_mac_screen_off
+      from: "True"
+      to: "False"
+  actions:
+    - action: switch.turn_on
+      entity_id: switch.office_studio_monitors
+  mode: single
+
+- id: 9b312198-f65c-4928-baef-cac5a7bbc14c
+  alias: Office Carson Mac Screen Off
+  triggers:
+    - trigger: state
+      entity_id: sensor.carson_mac_screen_off
+      from: "False"
+      to: "True"
+      for: "00:30:00"
+  actions:
+    - action: switch.turn_off
+      entity_id: switch.office_studio_monitors
+  mode: single
+
+- id: 76df93c8-0d42-4050-9da3-7d84847c645c
+  alias: Office Carson Mac Webcam On
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.carson_mac_camera_in_use
+      to: "on"
+  actions:
+    - action: input_select.select_option
+      data:
+        option: meeting
+      target:
+        entity_id: input_select.office_state
+  mode: queued
+
+- id: f07773da-30ae-4965-9a5d-4b044fdc3511
+  alias: Office Carson Mac Webcam Off
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.carson_mac_camera_in_use
+      from: "on"
+      to: "off"
+  actions:
+    - action: input_select.select_option
+      data:
+        option: normal
+      target:
+        entity_id: input_select.office_state
+  mode: queued
+
+- id: a38cc913-a62b-489f-a97b-78666f14e2b7
+  alias: Office Occupied
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.office_motion_sensor_occupancy
+      to: "on"
+  actions:
+    - action: scene.turn_on
+      entity_id: scene.office_active_day
+
+- id: 321dc653-ab98-4df4-a52b-bd8069e5d87c
+  alias: Office Vacant
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.office_motion_sensor_occupancy
+      to: "off"
+      for: "01:00:00"
+  actions:
+    - action: scene.turn_on
+      entity_id: scene.office_inactive
+
+- id: 11102163-7ee2-4ebc-8719-9c0474ba7f6d
+  alias: Bedroom Bathroom Occupied
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.bedroom_bathroom_occupancy
+      from: "off"
+      to: "on"
+  actions:
+    - action: light.turn_on
+      entity_id: light.bedroom_bathroom_vanity
+
+- id: 3127357f-b50e-4382-b493-9b434bce18be
+  alias: Bedroom Bathroom Vacant
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.bedroom_bathroom_occupancy
+      to: "off"
+      for: "00:30:00"
+  actions:
+    - action: light.turn_off
+      entity_id: light.bedroom_bathroom_vanity
+
+- id: 627e6d5d-ff83-495d-a2a5-ce3b281a1b49
+  alias: Back Deck Floodlight
+  description: "Turns on back deck flood light when the patio door is opened or motion is detected in the back yard if it is night time"
+  triggers:
+    - trigger: state
+      entity_id:
+        - binary_sensor.aarlo_motion_south_backyard
+      from:
+        - "off"
+      to:
+        - "on"
+    - trigger: state
+      entity_id:
+        - binary_sensor.aarlo_motion_north_backyard
+      from:
+        - "off"
+      to:
+        - "on"
+    - trigger: state
+      entity_id:
+        - binary_sensor.patio_door
+      from:
+        - "off"
+      to:
+        - "on"
+  conditions:
+    - condition: state
+      entity_id: sun.sun
+      state:
+        - below_horizon
+  actions:
+    - action: light.turn_on
+      metadata: {}
+      target:
+        entity_id: light.back_deck_floodlight
+      data: {}
+    - delay:
+        hours: 0
+        minutes: 10
+        seconds: 0
+        milliseconds: 0
+    - action: light.turn_off
+      metadata: {}
+      target:
+        entity_id: light.back_deck_floodlight
+      data: {}
+  mode: restart
