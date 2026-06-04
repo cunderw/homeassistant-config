@@ -216,3 +216,34 @@
       entity_id: light.back_deck_floodlight
     data: {}
   mode: restart
+- id: a8d509e8-34a5-48b3-a680-87ed30540461
+  alias: Bedroom Bathroom Ceiling Controls Vanity
+  description: Mirror the vanity light to the ceiling light so the ceiling switch controls
+    both fixtures
+  triggers:
+  - trigger: state
+    entity_id: light.bedroom_bathroom_ceiling
+    to: 'on'
+    id: ceiling_on
+  - trigger: state
+    entity_id: light.bedroom_bathroom_ceiling
+    to: 'off'
+    id: ceiling_off
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: ceiling_on
+      sequence:
+      - action: light.turn_on
+        target:
+          entity_id: light.bedroom_bathroom_vanity
+    - conditions:
+      - condition: trigger
+        id: ceiling_off
+      sequence:
+      - action: light.turn_off
+        target:
+          entity_id: light.bedroom_bathroom_vanity
+  mode: restart
