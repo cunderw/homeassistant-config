@@ -1,0 +1,3 @@
+# Required folder for the `python_script:` integration (enabled in configuration.yaml).
+# HACS depends on python_script; without this folder, both fail to initialize at startup.
+# Drop .py scripts here; this placeholder keeps the (otherwise empty) folder in git.

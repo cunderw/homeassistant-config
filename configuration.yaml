@@ -55,9 +55,9 @@ stream:
 #################################################
 aarlo: !include /config/aarlo/aarlo.yaml
 automation: !include automations.yaml
-group: !include_dir_merge_named groups/
-notify: !include_dir_merge_list notifications/
-rest_command: !include_dir_merge_named rest_commands/
 scene: !include scenes.yaml
 script: !include scripts.yaml
+
 template: !include_dir_merge_list templates/
+group: !include_dir_merge_named groups/
+notify: !include_dir_merge_list notifications/
