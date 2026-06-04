@@ -2,6 +2,7 @@
 # Bedroom Motion
 #################################################
 - alias: Bedroom Bathroom Occupied
+  id: 11102163-7ee2-4ebc-8719-9c0474ba7f6d
   triggers:
     - trigger: state
       entity_id: binary_sensor.bedroom_bathroom_occupancy
@@ -12,6 +13,7 @@
       entity_id: light.bedroom_bathroom_vanity
 
 - alias: Bedroom Bathroom Vacant
+  id: 3127357f-b50e-4382-b493-9b434bce18be
   triggers:
     - trigger: state
       entity_id: binary_sensor.bedroom_bathroom_occupancy

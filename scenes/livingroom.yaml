@@ -25,8 +25,8 @@
       brightness: 51
       rgb_color:
         - 255
-        - 131
-        - 118
+        - 43
+        - 82
     light.living_room_bar_lights:
       state: "off"
     light.living_room_stair_lights:
@@ -35,14 +35,27 @@
       state: "off"
     light.living_room_couch_lights:
       state: "off"
+    light.living_room_side_lights:
+      state: "off"
     light.patio_door_light:
       state: "off"
     light.playroom_lights:
       state: "off"
-    light.dining_room_lights:
+    light.dining_room_ceiling:
+      state: "off"
+    light.upstairs_hallway:
+      state: "off"
+    light.dining_room_floor_lamp_1:
       state: "on"
       brightness: 51
       rgb_color:
         - 255
-        - 131
-        - 118
+        - 3
+        - 85
+    light.dining_room_floor_lamp_2:
+      state: "on"
+      brightness: 51
+      rgb_color:
+        - 255
+        - 3
+        - 85

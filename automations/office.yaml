@@ -2,6 +2,7 @@
 # carson-mac
 #################################################
 - alias: Office Carson Mac Screen On
+  id: 71e32aa0-fd43-4526-90a1-ce259b8715b5
   triggers:
     - trigger: state
       entity_id: sensor.carson_mac_screen_off
@@ -14,6 +15,7 @@
   mode: single
 
 - alias: Office Carson Mac Screen Off
+  id: 9b312198-f65c-4928-baef-cac5a7bbc14c
   triggers:
     - trigger: state
       entity_id: sensor.carson_mac_screen_off
@@ -26,6 +28,7 @@
   mode: single
 
 - alias: Office Carson Mac Webcam On
+  id: 76df93c8-0d42-4050-9da3-7d84847c645c
   triggers:
     - trigger: state
       entity_id: binary_sensor.carson_mac_camera_in_use
@@ -39,6 +42,7 @@
   mode: queued
 
 - alias: Office Carson Mac Webcam Off
+  id: f07773da-30ae-4965-9a5d-4b044fdc3511
   triggers:
     - trigger: state
       entity_id: binary_sensor.carson_mac_camera_in_use
@@ -56,6 +60,7 @@
 # Motion
 #################################################
 - alias: Office Occupied
+  id: a38cc913-a62b-489f-a97b-78666f14e2b7
   triggers:
     - trigger: state
       entity_id: binary_sensor.office_motion_sensor_occupancy
@@ -65,6 +70,7 @@
       entity_id: scene.office_active_day
 
 - alias: Office Vacant
+  id: 321dc653-ab98-4df4-a52b-bd8069e5d87c
   triggers:
     - trigger: state
       entity_id: binary_sensor.office_motion_sensor_occupancy

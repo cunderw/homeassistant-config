@@ -1,31 +1,32 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"files.associations": {
-			"*.yaml": "home-assistant"
-		},
-		"editor.fontFamily": "Menlo",
-		"files.watcherExclude": {
-			"**/.aarlo/**": true,
-			"**/.cloud/**": true,
-			"**/.storage/**": true,
-			"**/custom_components/**": true,
-			"**/tts/**": true,
-			"**/www/**": true,
-			"**/themes/**": true
-		},
-		"files.exclude": {
-			"**/.aarlo/**": true,
-			"**/.cloud/**": true,
-			"**/.storage/**": true,
-			"**/custom_components/**": true,
-			"**/tts/**": true,
-			"**/www/**": true,
-			"**/themes/**": true
-		}
-	}
+  "folders": [
+    {
+      "path": ".",
+    },
+  ],
+  "settings": {
+    "files.associations": {
+      "*.yaml": "home-assistant",
+    },
+    "vscode-home-assistant.ignoreCertificates": true,
+    "editor.fontFamily": "Menlo",
+    "files.watcherExclude": {
+      "**/.aarlo/**": true,
+      "**/.cloud/**": true,
+      "**/.storage/**": true,
+      "**/custom_components/**": true,
+      "**/tts/**": true,
+      "**/www/**": true,
+      "**/themes/**": true,
+    },
+    "files.exclude": {
+      "**/.aarlo/**": true,
+      "**/.cloud/**": true,
+      "**/.storage/**": true,
+      "**/custom_components/**": true,
+      "**/tts/**": true,
+      "**/www/**": true,
+      "**/themes/**": true,
+    },
+  },
 }

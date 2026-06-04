@@ -5,6 +5,15 @@
     - light.bedroom_bedside_lamps
     - light.bedroom_floor_lamp
     - light.bedroom_dresser_lamp
+    - light.bedroom_ceiling_lights
+
+- platform: group
+  name: Bedroom Bathroom Lights
+  unique_id: "c6a66e54-e0d9-4641-add0-c18d01c3bdf8"
+  entities:
+    - light.bedroom_bathroom_ceiling
+    - light.bedroom_bathroom_vanity
+    - light.bedroom_closet
 
 - platform: group
   name: Dining Room Lights
@@ -12,6 +21,7 @@
   entities:
     - light.dining_room_floor_lamp_1
     - light.dining_room_floor_lamp_2
+    - light.dining_room_ceiling
 
 - platform: group
   name: Playroom Lights

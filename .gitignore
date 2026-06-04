@@ -26,3 +26,5 @@ blueprints
 zigbee.db-journal
 zigbee.db-wal
 zigbee.db-shm
+.cache
+

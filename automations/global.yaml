@@ -2,6 +2,7 @@
 # General
 #################################################
 - alias: "Sun Rise"
+  id: 45512fdc-7b3a-4c44-931c-0afde7ba23f8
   triggers:
     trigger: sun
     event: sunrise
@@ -23,6 +24,7 @@
 # Location & Alarms
 #################################################
 - alias: Arm Away
+  id: c63158aa-26ca-48db-a08d-e7384537d4e7
   triggers:
     trigger: state
     entity_id: group.family_tracker
@@ -42,6 +44,7 @@
   mode: single
 
 - alias: Arm Home
+  id: 725a9747-22d0-4efd-84e1-37bda566171e
   triggers:
     trigger: state
     entity_id: group.family_tracker
@@ -96,6 +99,7 @@
 # House State
 #################################################
 - alias: Lock Doors
+  id: 8ce1f043-b003-480c-a8c8-3c6406f3f444
   triggers:
     - trigger: state
       entity_id: input_select.house_state
@@ -108,6 +112,7 @@
     - action: script.lock_doors
 
 - alias: Bed Time 
+  id: dd007a77-858d-471d-ad4c-14f050f8c61d
   triggers:
     - trigger: state
       entity_id: input_select.house_state

@@ -1,88 +1,23 @@
 #################################################
 # Door Alerts
 #################################################
-- alias: Announce Someone Is At The Front Door
-  triggers:
-    - trigger: state
-      entity_id: binary_sensor.aarlo_ding_front_doorbell
-      from: "off"
-      to: "on"
-  actions:
-    - action: notify.google_assistant_sdk
-      data:
-        message: Someone is at the front door
-
-# - alias: Announce Front Door Open
+# - alias: Door Alarm When Away
 #   triggers:
 #     - trigger: state
 #       entity_id: binary_sensor.front_door
-#       from: "off"
 #       to: "on"
-#       for: "00:00:01"
+#   condition:
+#     condition: state
+#     entity_id: input_select.house_state
+#     state: "away"
 #   actions:
-#     - action: notify.google_assistant_sdk
+#     - action: aarlo.sirens_on
 #       data:
-#         message: Front door is open
-#   mode: single
-
-# - alias: Announce Garage Door Open
-#   triggers:
-#     - trigger: state
-#       entity_id: binary_sensor.garage_door
-#       from: "off"
-#       to: "on"
-#       for: "00:00:01"
-#   actions:
-#     - action: notify.google_assistant_sdk
+#         volume: 10
+#         duration: 300
+#     - action: alarm_control_panel.alarm_triggers
+#       entity_id: alarm_control_panel.aarlo_annacar_arlo
+#     - action: notify.all_personal_devices
 #       data:
-#         message: Garage door is open
+#         message: "Someone Is Breaking In!"
 #   mode: single
-
-
-- alias: Door Alarm When Away
-  triggers:
-    - trigger: state
-      entity_id: binary_sensor.front_door
-      to: "on"
-  condition:
-    condition: state
-    entity_id: input_select.house_state
-    state: "away"
-  actions:
-    - action: aarlo.sirens_on
-      data:
-        volume: 10
-        duration: 300
-    - action: alarm_control_panel.alarm_triggers
-      entity_id: alarm_control_panel.aarlo_annacar_arlo
-    - action: notify.all_personal_devices
-      data:
-        message: "Someone Is Breaking In!"
-  mode: single
-
-#################################################
-# Door Notifications
-#################################################
-- alias: Notify Someone Is At The Front Door
-  triggers:
-    - trigger: state
-      entity_id: binary_sensor.aarlo_ding_front_doorbell
-      from: "off"
-      to: "on"
-  actions:
-    - action: notify.all_personal_devices
-      data:
-        message: "Someone is at the front door!"
-
-- alias: Notify Front Door Open
-  triggers:
-    - trigger: state
-      entity_id: binary_sensor.front_door
-      from: "off"
-      to: "on"
-      for: "00:00:01"
-  actions:
-    - action: notify.all_personal_devices
-      data:
-        message: "Front door is open!"
-  mode: single

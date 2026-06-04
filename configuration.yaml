@@ -30,15 +30,6 @@ http:
   ip_ban_enabled: true
   login_attempts_threshold: 5
 
-influxdb:
-  host: a0d7b954-influxdb
-  port: 8086
-  database: homeassistant
-  username: homeassistant
-  password: !secret influxdb_password
-  max_retries: 3
-  default_measurement: state
-
 logger:
   default: error
   logs:
@@ -80,30 +71,3 @@ script: !include_dir_merge_named scripts/
 shell_command: !include_dir_merge_named shell/
 # switch: !include_dir_merge_list switches/
 template: !include_dir_merge_list templates/
-
-#################################################
-# Load Fronnt End Modules
-#################################################
-lovelace:
-  mode: yaml
-  resources:
-    - type: module
-      url: /local/community/battery-state-card/battery-state-card.js
-    - type: module
-      url: /local/community/button-card/button-card.js
-    - type: module
-      url: /local/community/lovelace-auto-entities/auto-entities.js
-    - type: module
-      url: /local/community/lovelace-hass-aarlo/hass-aarlo.js
-    - type: module
-      url: /local/community/lovelace-mushroom/mushroom.js
-    - type: module
-      url: /local/community/lovelace-slider-entity-row/slider-entity-row.js
-    - type: module
-      url: /local/community/mini-graph-card/mini-graph-card-bundle.js
-    - type: module
-      url: /local/community/mini-media-player/mini-media-player-bundle.js
-    - type: module
-      url: /local/community/numberbox-card/numberbox-card.js
-    - type: module
-      url: /local/community/slider-button-card/slider-button-card.js
