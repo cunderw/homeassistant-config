@@ -3,6 +3,7 @@
 .cloud/
 .google.token
 .HA_VERSION
+.ha_run.lock
 .storage/
 .vscode/
 aircast.xml
