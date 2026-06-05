@@ -247,3 +247,53 @@
         target:
           entity_id: light.bedroom_bathroom_vanity
   mode: restart
+- id: 591d4657-1b38-4da5-8bf9-714a86e36b07
+  alias: Garage Left Open
+  description: Remind every 10 minutes while the garage is open and no one is home
+  triggers:
+  - trigger: state
+    entity_id: cover.garage_door
+    to: open
+    for: 00:10:00
+  - trigger: state
+    entity_id: group.family_tracker
+    to: not_home
+    for: 00:02:00
+  conditions:
+  - condition: state
+    entity_id: cover.garage_door
+    state: open
+  - condition: state
+    entity_id: group.family_tracker
+    state: not_home
+  actions:
+  - repeat:
+      while:
+      - condition: state
+        entity_id: cover.garage_door
+        state: open
+      - condition: state
+        entity_id: group.family_tracker
+        state: not_home
+      sequence:
+      - action: notify.all_personal_devices
+        data:
+          title: Garage still open
+          message: The garage door is open and no one is home.
+      - delay: 00:10:00
+  mode: single
+- id: b929f021-34b1-4ec7-8614-88e041010acb
+  alias: Fridge Left Open
+  description: Notify everyone if the fridge door stays open for 2 minutes
+  triggers:
+  - trigger: state
+    entity_id: binary_sensor.refrigerator_door
+    to: 'on'
+    for: 00:02:00
+  conditions: []
+  actions:
+  - action: notify.all_personal_devices
+    data:
+      title: Fridge door open
+      message: The fridge door has been open for 2 minutes.
+  mode: single
