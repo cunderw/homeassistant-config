@@ -16,44 +16,6 @@
   actions:
   - action: switch.turn_on
     entity_id: switch.front_porch
-- id: c63158aa-26ca-48db-a08d-e7384537d4e7
-  alias: Arm Away
-  triggers:
-    trigger: state
-    entity_id: group.family_tracker
-    from: home
-    to: not_home
-    for:
-      seconds: 60
-  condition: []
-  actions:
-  - action: alarm_control_panel.alarm_arm_away
-    entity_id: alarm_control_panel.aarlo_annacar_arlo
-  - action: notify.all_personal_devices
-    data:
-      message: Everyone has left. Activating Away Mode.
-  - action: scene.turn_on
-    entity_id: scene.away
-  mode: single
-- id: 725a9747-22d0-4efd-84e1-37bda566171e
-  alias: Arm Home
-  triggers:
-    trigger: state
-    entity_id: group.family_tracker
-    from: not_home
-    to: home
-    for:
-      seconds: 10
-  condition: []
-  actions:
-  - action: alarm_control_panel.alarm_arm_home
-    entity_id: alarm_control_panel.aarlo_annacar_arlo
-  - action: notify.all_personal_devices
-    data:
-      message: Arriving Home
-  - action: scene.turn_on
-    entity_id: scene.arriving_home
-  mode: single
 - id: 8ce1f043-b003-480c-a8c8-3c6406f3f444
   alias: Lock Doors
   triggers:
@@ -167,7 +129,9 @@
   - action: light.turn_off
     data: {}
     target:
-      entity_id: light.bedroom_bathroom_ceiling
+      entity_id:
+      - light.bedroom_bathroom_ceiling
+      - light.bedroom_closet
 - id: 627e6d5d-ff83-495d-a2a5-ce3b281a1b49
   alias: Back Deck Floodlight
   description: Turns on back deck flood light when the patio door is opened or motion
@@ -218,8 +182,8 @@
   mode: restart
 - id: a8d509e8-34a5-48b3-a680-87ed30540461
   alias: Bedroom Bathroom Ceiling Controls Vanity
-  description: Mirror the vanity light to the ceiling light so the ceiling switch controls
-    both fixtures
+  description: Mirror the vanity light to the ceiling light so the ceiling switch
+    controls both fixtures
   triggers:
   - trigger: state
     entity_id: light.bedroom_bathroom_ceiling
@@ -297,3 +261,69 @@
       title: Fridge door open
       message: The fridge door has been open for 2 minutes.
   mode: single
+- id: 087fca00-7cc2-40bf-b0bc-c9823c2ea588
+  alias: Entry Alerts
+  description: Notify whenever the garage opens, the back (patio) door opens, or the
+    front door is unlocked
+  triggers:
+  - trigger: state
+    entity_id: cover.garage_door
+    to: open
+    id: garage
+  - trigger: state
+    entity_id: binary_sensor.patio_door
+    to: 'on'
+    id: back_door
+  - trigger: state
+    entity_id: lock.front_door
+    to: unlocked
+    id: front_lock
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: garage
+      sequence:
+      - action: notify.all_personal_devices
+        data:
+          title: Garage door opened
+          message: The garage door just opened.
+    - conditions:
+      - condition: trigger
+        id: back_door
+      sequence:
+      - action: notify.all_personal_devices
+        data:
+          title: Back door opened
+          message: The back (patio) door just opened.
+    - conditions:
+      - condition: trigger
+        id: front_lock
+      sequence:
+      - action: notify.all_personal_devices
+        data:
+          title: Front door unlocked
+          message: The front door was just unlocked.
+  mode: queued
+  max: 10
+- id: 0c1b9f7e-4e2a-4b6d-9b0a-2f3e5c8a7d61
+  alias: Thermostat Set Temp Changed
+  description: Notify when the thermostat's target temperature is changed
+  triggers:
+  - trigger: state
+    entity_id: climate.thermostat
+    attribute: temperature
+  conditions:
+  - condition: template
+    value_template: "{{ trigger.from_state.attributes.temperature != trigger.to_state.attributes.temperature }}"
+  actions:
+  - action: notify.all_personal_devices
+    data:
+      title: Thermostat set temp changed
+      message: >-
+        The thermostat set temperature changed from
+        {{ trigger.from_state.attributes.temperature }}° to
+        {{ trigger.to_state.attributes.temperature }}°.
+  mode: queued
+  max: 10
