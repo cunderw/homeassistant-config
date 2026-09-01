@@ -7,8 +7,6 @@ homeassistant:
     - /tmp
   # customize: !include_dir_merge_named customize/
   elevation: !secret elevation
-  external_url: !secret external_url
-  internal_url: !secret internal_url
   latitude: !secret latitude
   longitude: !secret longitude
   name: Annacar Home
@@ -22,13 +20,6 @@ homeassistant:
 #################################################
 frontend:
   themes: !include_dir_merge_named themes
-
-http:
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - !secret gateway_ip
-  ip_ban_enabled: true
-  login_attempts_threshold: 5
 
 logger:
   default: error
